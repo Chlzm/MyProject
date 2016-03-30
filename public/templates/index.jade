@@ -1,0 +1,44 @@
+extend layout
+block content
+    div.header(ng-click="fn()")
+        div.top_link_box
+            div.top_link
+                | 您好，欢迎来到老ddff年帮&nbsp;&nbsp;
+                a(href="#") 注册
+                | &nbsp; | &nbsp;
+                a(href="#") 登录
+        div.logo_area
+            h1.logo_a(title="老年帮，一直最疼我的人，我拿什么来爱你")
+                a(href="#")
+                    img(src="../images/logo.png" width="467" heigt="95")
+            div.home_search
+                input.keywords(type="text" value="请输入您要查找的关键字")
+                input.hs_btn_submit(type="submit" value="")
+    div.content_box(ng-show="show")
+        div.content
+            ul.banner_list
+                li.w290.on
+                    a.box(href="#")
+                        h3
+                            strong 有不会的，我帮您！
+                            em.mouse
+                        p.description 手把手教您用手机 、 用电脑 、用PAD、用平板、用QQ、用微信
+                li
+                    a.box.light_green(href="#")
+                        h3
+                            strong 听大戏曲
+                            em.earplug
+                        p.description 天下戏曲在这里京剧、 豫剧、黄梅戏、河南坠子
+                li
+                    a.box.blue(href="#")
+                        h3
+                            strong 找朋友
+                            em.person
+                        p.description 众里寻他千百度找战友、找知青、找同学
+                li.last.w212
+                    a.box.dark_blue(href="#")
+                        h3
+                            strong 焦点话题
+                            em.topic
+                        p.description 跟我最相关新闻、政策、健康、活动
+

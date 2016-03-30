@@ -1,0 +1,196 @@
+extend layout
+block content
+    body(ng-app="app" ng-controller="PollListCtrl" )
+        script(type="text/javascript" src="/js/app/index/index.js")
+        div.header(ng-click="fn()")
+            div.top_link_box
+                div.top_link
+                    | 您好，欢迎来到老ddff年帮&nbsp;&nbsp;
+                    a(href="#") 注册
+                    | &nbsp; | &nbsp;
+                    a(href="#") 登录
+            div.logo_area
+                h1.logo_a(title="老年帮，一直最疼我的人，我拿什么来爱你")
+                    a(href="#")
+                        img(src="../images/logo.png" width="467" heigt="95")
+                div.home_search
+                    input.keywords(type="text" value="{{result.length}}")
+                    input.hs_btn_submit(type="submit" value="")
+        div.content_box(ng-show="show")
+            div.content
+                ul.banner_list
+                    li.w290.on
+                        a.box(href="#")
+                            h3
+                                strong 有不会的，我帮您！
+                                em.mouse
+                            p.description 手把手教您用手机 、 用电脑 、用PAD、用平板、用QQ、用微信
+                    li
+                        a.box.light_green(href="#")
+                            h3
+                                strong 听大戏曲
+                                em.earplug
+                            p.description 天下戏曲在这里京剧、 豫剧、黄梅戏、河南坠子
+                    li
+                        a.box.blue(href="#")
+                            h3
+                                strong 找朋友
+                                em.person
+                            p.description 众里寻他千百度找战友、找知青、找同学
+                    li.last.w212
+                        a.box.dark_blue(href="#")
+                            h3
+                                strong 焦点话题
+                                em.topic
+                            p.description 跟我最相关新闻、政策、健康、活动
+                    li.w246.mrb0
+                        a.box.green(href="#")
+                            h3
+                                strong 我有一个小心愿
+                                em.love
+                            p.description 今天有话悄悄说希望孩子陪我过生日、希望孙子周末来看我...
+                    li.w266.mrb0
+                        a.box.orange(href="#")
+                            h3
+                                strong 大家来支招
+                                em.flower
+                            p.description 有我更精彩给老人帮网站提建议、让网站更好的为老人服务
+                    li.mrb0
+                        a.box.brown(href="#")
+                            h3
+                                strong 还有其他需求
+                                em.pen
+                            p.description 量身定做告诉我们你想听的戏、想要找的任何东西
+                    li.last.w230.mrb0
+                        a.box.pink(href="#")
+                            h3.attention
+                                strong 了解我们
+                                em.attention
+                            p.description 用心为您不推销、不营销只为爱你多一点
+                div.home_module
+                    div.hm_header
+                        h2 热门知识推荐
+                        a.more(href="#") 更多
+                    div.hm_content(ng-if="dataList")
+                        ul.item
+                            li(ng-repeat="item in dataList")
+                                a.hi_a(href="{{item.url}}")
+                                    img(src="{{item.imageUrl}}" width="225" height="150")
+                                    | {{item.text}}
+                                p.info
+                                    span 浏览{{item.viewCount}}次
+                                    span.right 好评{{item.commentCount}}次                            
+                div.home_module
+                    div.hm_header
+                        h2 热点戏曲推荐
+                        a.more(href="#") 更多
+                    div.hm_content
+                        ul.item
+                            li(ng-repeat="item in operaList")
+                                a.hi_a(href="{{item.url}}")
+                                    img(src="{{item.imageUrl}}" width="225" height="150")
+                                    | {{item.text}}
+                                p.info
+                                    span 浏览{{item.viewCount}}次
+                                    span.right 好评{{item.commentCount}}次
+                div.home_module
+                    div.hm_header
+                        h2 找朋友信息推荐
+                        a.more(href="#") 更多
+                    div.hm_content
+                        ul.item
+                            li.find_friend
+                                div.info_box
+                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
+                                div.clear
+                                p.state 状态：寻找中
+                                div.clear
+                                a.btn_friend_register(href="#") 注册本站可查看联系方式
+                            li.find_friend
+                                div.info_box
+                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
+                                div.clear
+                                p.state 状态：寻找中
+                                div.clear
+                                a.btn_friend_register(href="#") 注册本站可查看联系方式
+                            li.find_friend
+                                div.info_box
+                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
+                                div.clear
+                                p.state 状态：寻找中
+                                div.clear
+                                a.btn_friend_register(href="#") 注册本站可查看联系方式
+                            li.find_friend
+                                div.info_box
+                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
+                                div.clear
+                                p.state 状态：寻找中
+                                div.clear
+                                a.btn_friend_register(href="#") 注册本站可查看联系方式
+                div.home_module
+                    div.hm_header
+                        h2 焦点话题
+                        a.more(href="more") 更多
+                    div.hm_content.clearfix
+                        div.banner_box
+                            div.banner_sub
+                                p.banner_scroll
+                                    span.sp1
+                                        a(href="#")
+                                            img(src="../images/img02.png")
+                                    span.sp2
+                            ul.banner_num
+                        div.topic_list
+                            dl
+                                dt
+                                    h3
+                                        a(href="#") 李克强考察埃塞轻轨 与工人一起拿扳手拧螺丝
+                                        span.span [2014.04.21]
+                                dd
+                                    a(href="#") 2014年5月5日下午，国务院总理李克强考察了亚的斯亚贝巴轻轨项目，埃塞俄比亚总姆陪同亚
+                            dl
+                                dt
+                                    h3
+                                        a(href="#") 李克强考察埃塞轻轨 与工人一起拿扳手拧螺丝
+                                        span.span [2014.04.21]
+                                dd
+                                    a(href="#") 2014年5月5日下午，国务院总理李克强考察了亚的斯亚贝巴轻轨项目，埃塞俄比亚总姆陪同亚
+                            dl
+                                dt
+                                    h3
+                                        a(href="#") 李克强考察埃塞轻轨 与工人一起拿扳手拧螺丝
+                                        span.span [2014.04.21]
+                                dd
+                                    a(href="#") 2014年5月5日下午，国务院总理李克强考察了亚的斯亚贝巴轻轨项目，埃塞俄比亚总姆陪同亚
+                            dl
+                                dt
+                                    h3
+                                        a(href="#") 李克强考察埃塞轻轨 与工人一起拿扳手拧螺丝
+                                        span.span [2014.04.21]
+                                dd
+                                    a(href="#") 2014年5月5日下午，国务院总理李克强考察了亚的斯亚贝巴轻轨项目，埃塞俄比亚总姆陪同亚
+        div.footer_box
+            div.footer
+                p.friend_link
+                    a(href="#") 上海市老年基金会
+                    a(href="#") 色年代网
+                    a(href="#") 中国气象网
+                    a(href="#") 搜狐
+                    a(href="#") 色年代网
+                    a(href="#") 丁丁网
+                    a(href="#") 东方网
+                    a(href="#") 淘宝网
+                    a(href="#") 凤凰网
+                    a(href="#") 中国雅虎
+                    a(href="#") 新浪
+                    a(href="#") 东方老年
+                div.copyright_box
+                    p.link
+                        a(href="#") 关于我们
+                        | &nbsp;|&nbsp;
+                        a(href="#") 免责声明
+                        | &nbsp;|&nbsp;
+                        a(href="#") 友情链接
+                        | &nbsp;|&nbsp;
+                        a(href="#") 联系我们
+                    p.copyright 版权所有：中国老年帮   沪ICP25425401 建议使用IE7以上浏览器

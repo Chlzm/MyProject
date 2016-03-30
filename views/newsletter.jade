@@ -1,0 +1,13 @@
+extend layout
+block content
+	h2 Sign up for newsletter to receive and specials
+	form.form-horizontal(role=form action="getValue?form=newsletter" method="post")
+		input(type="hidden" name="_csrf" value="#{username}")
+		div.form-group
+			label.col-sm-2.control-label(for="fieldName") Name
+			.col-sm-4
+				input#fieldName.form-control(type="text" name="name" value="#{username}")
+		div.form-group
+			label.col-sm-2.control-label 
+			.col-sm-4
+				input.btn.btn-primary(type="submit" value="submit")
