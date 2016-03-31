@@ -9,7 +9,7 @@
  .exec(callback);
 * */
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/chihuo');
+var db = mongoose.connect('mongodb://localhost/data');
 var Schema = mongoose.Schema;
 // 用户信息
 var userScheMa = new Schema({
@@ -33,5 +33,5 @@ var opera = new Schema({
     text : String
 });
 exports.user = db.model('users', userScheMa);
-exports.knowledge = db.model('kn1', knowledge);
+exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
