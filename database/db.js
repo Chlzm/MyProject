@@ -9,7 +9,7 @@
  .exec(callback);
 * */
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/chihuo');
+var db = mongoose.connect('mongodb://192.168.11.113/data');
 var Schema = mongoose.Schema;
 // 用户信息
 var userScheMa = new Schema({

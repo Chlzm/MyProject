@@ -21,7 +21,10 @@
                     url : '/getHotKnowledge',
                     method : 'POST',
                     data : {
-                        aa : 1
+                        page : 3
+                    },
+                    params : {
+                        bb : 2
                     }
                 }).success(function(result){
                     setTimeout(function () {
