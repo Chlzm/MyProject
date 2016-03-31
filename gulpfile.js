@@ -19,15 +19,15 @@ gulp.task('jade', function(){
 });
 // 编译less
 gulp.task('less',function(){
-	gulp.src('public/stylesheets/*.less')
+	gulp.src('public/stylesheets/less/*.less')
 	.pipe(less())
-	.pipe(gulp.dest('public/stylesheets'))
+	.pipe(gulp.dest('public/stylesheets/css'))
 });
 //编译sass
 gulp.task('sass',function(){
-	gulp.src('public/stylesheets/*.sass')
+	gulp.src('public/stylesheets/sass/*.sass')
 	.pipe(sass())
-	.pipe(gulp.dest('public/stylesheets'))
+	.pipe(gulp.dest('public/stylesheets/css'))
 });
 // 编译scss
 /*gulp.task('scss',function(){
@@ -39,8 +39,8 @@ gulp.task('sass',function(){
 });*/
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);
-	gulp.watch('./public/stylesheets/*.less',['less']);
-	gulp.watch('./public/stylesheets/*.sass',['sass']);
+	gulp.watch('./public/stylesheets/**/*.less',['less']);
+	gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });
 gulp.task('default',['watch'])

@@ -6,7 +6,7 @@
   border-wdith: 5px;
 }
 #header a .test {
-  color: red;
+  color: blue;
 }
 #header a:hover {
   text-decoration: underline;
