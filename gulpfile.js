@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
-var webserver = require('gulp-webserver');
+var less = require('gulp-less');
+var sass = require('gulp-sass');
+//var scss = require('gulp-scss-lint');
+
 var jadeFiles = [
     {src: './public/partials/list.jade', dest: './public/partials/'},
     {src: './public/templates/index.jade', dest: './public/templates/'}
@@ -14,19 +17,30 @@ gulp.task('jade', function(){
             .pipe(gulp.dest(jf.dest));
     });
 });
-
+// 缂栬瘧less
+gulp.task('less',function(){
+	gulp.src('public/stylesheets/*.less')
+	.pipe(less())
+	.pipe(gulp.dest('public/stylesheets'))
+});
+//缂栬瘧sass
+gulp.task('sass',function(){
+	gulp.src('public/stylesheets/*.sass')
+	.pipe(sass())
+	.pipe(gulp.dest('public/stylesheets'))
+});
+// 缂栬瘧scss
+/*gulp.task('scss',function(){
+	return gulp.src('public/stylesheets*//*.scss')
+    .pipe(scss({
+		bundleExec :true
+	}))
+	.pipe(gulp.dest('public/stylesheets'))
+});*/
 gulp.task('watch', function(){
-    // 不同的文件个性，需要执行不同的任务来处理
-    gulp.watch('./public/partials/*.jade',['jade']);
+    //gulp.watch('./public/partials/*.jade',['jade']);
+	gulp.watch('./public/stylesheets/*.less',['less']);
+	gulp.watch('./public/stylesheets/*.sass',['sass']);
+	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });
 gulp.task('default',['watch'])
-/*
-gulp.task('webserver', function(){
-    gulp.src('./public/')
-        .pipe(webserver({
-            host: '127.0.0.1',
-            livereload: true,
-            fallback: 'index.html'
-        }));
-});
-*/
