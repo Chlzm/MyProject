@@ -1,7 +1,7 @@
 extend layout
 block content
     body(ng-app="app" ng-controller="PollListCtrl")
-        script(type="text/javascript" src="/js/app/index/index.js")
+        script(type="text/javascript" src="/src/js/app/index/index.js")
         div.header(ng-click="fn()")
             div.top_link_box
                 div.top_link
@@ -12,7 +12,7 @@ block content
             div.logo_area
                 h1.logo_a(title="老年帮，一直最疼我的人，我拿什么来爱你")
                     a(href="#")
-                        img(src="../images/logo.png" width="467" heigt="95")
+                        img(src="../dest/images/logo.png" width="467" heigt="95")
                 div.home_search
                     input.keywords(type="text" value="{{result}}")
                     input.hs_btn_submit(type="submit" value="")
@@ -137,7 +137,7 @@ block content
                                 p.banner_scroll
                                     span.sp1
                                         a(href="#")
-                                            img(src="../images/img02.png")
+                                            img(src="../dest/images/img02.png")
                                     span.sp2
                             ul.banner_num
                         div.topic_list
