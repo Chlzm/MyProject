@@ -12,7 +12,6 @@ app.use(cookieParser());
 app.use(session({
 	secret : '000000',
 	name : 'testapp',
-	cookie :{maxAge : 80000},
 	resave : false,
 	saveUninitialized : true
 }));
