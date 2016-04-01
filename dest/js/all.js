@@ -14,7 +14,6 @@
             init : function(){
                 this.getKnowledge();
                 this.getOpera();
-                this.getFriends();
             },
             // 热门知识推荐
             getKnowledge : function(){
@@ -43,22 +42,6 @@
                     setTimeout(function () {
                         $scope.$apply(function () {
                             $scope.operaList = result.result;
-                        });
-                    }, 0);
-                })
-            },
-            // 热门戏曲
-            getFriends : function(){
-                $http({
-                    url : '/getFriends',
-                    method : 'POST',
-                    data : {
-                        aa : 1
-                    }
-                }).success(function(result){
-                    setTimeout(function () {
-                        $scope.$apply(function () {
-                            $scope.friendsList = result.result;
                         });
                     }, 0);
                 })

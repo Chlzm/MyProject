@@ -5,10 +5,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var db = require("./database/db.js");
 var app = express();
-var routes = require('./routes')({
-    app:app,
-    db : db
-});
 app.set("views",__dirname + "/views");
 app.set('view engine','jade');
 app.use(express.static(__dirname + '/public'));
@@ -21,6 +17,10 @@ app.use(session({
 	saveUninitialized : true
 }));
 app.use(bodyParser());
+var routes = require('./routes')({
+	app:app,
+	db : db
+});
 //p.get('/hello',routes.hello);
 /*app.get('/',function(req,res){
 	res.render('index',{title:"首页"});
@@ -46,4 +46,4 @@ app.use(bodyParser());
     });
 });*/
 //p.get('/thankyou',routes.thankyou);
-app.listen(4000);
+app.listen(3001);

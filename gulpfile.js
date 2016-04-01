@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var less = require('gulp-less');
+var scss = require('gulp-ruby-sass-ns');
+var ngmin = require('gulp-ngmin');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
     imagemin = require('gulp-imagemin'),//图片压缩
@@ -29,8 +31,8 @@ gulp.task('html', function() {
         .pipe(notify({message: 'html task ok'}));
 });
 // 压缩图片
-/*gulp.task('image', function() {
-    return gulp.src('public/src/images/!*.jpg')
+gulp.task('image', function() {
+    return gulp.src('public/src/images/*.jpg')
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
@@ -38,7 +40,7 @@ gulp.task('html', function() {
         }))
         .pipe(gulp.dest('public/dest/images'));
         //.pipe(notify({ message: 'img task ok' }));
-});*/
+});
 // 合并、压缩、重命名css
 gulp.task('css', function() {
     return gulp.src('public/src/stylesheets/css/*.css')
@@ -52,10 +54,12 @@ gulp.task('css', function() {
 // 合并、压缩js文件
 gulp.task('js', function() {
     return gulp.src('public/src/js/app/**/*.js')
-        //.pipe(concat('all.js'))
-        //.pipe(gulp.dest('dest/js'))
-        //.pipe(rename({ suffix: '.min' }))
+        /*.pipe(concat('all.js'))
+        .pipe(gulp.dest('dest/js'))
+        .pipe(rename({ suffix: '.min' }))*/
+        .pipe(ngmin({dynamic:false}))
         .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('public/dest/js/app'))
         //.pipe(notify({ message: 'js task ok' }));
 });
@@ -71,23 +75,16 @@ gulp.task('less',function(){
 	.pipe(gulp.dest('public/dest/stylesheets/css'))
 });
 //编译sass
-/*gulp.task('sass',function(){
-	gulp.src('public/stylesheets/sass/!*.sass')
-	.pipe(sass())
-	.pipe(gulp.dest('public/stylesheets/css'))
-});*/
-// 编译scss
-/*gulp.task('scss',function(){
-	return gulp.src('public/stylesheets*//*.scss')
-    .pipe(scss({
-		bundleExec :true
-	}))
-	.pipe(gulp.dest('public/stylesheets'))
-});*/
+gulp.task('scss',function(){
+	gulp.src('public/src/stylesheets/sass/*.sass')
+	.pipe(scss({style:'compact'}))
+	.pipe(gulp.dest('public/dest/stylesheets/css'))
+});
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);
 	gulp.watch('./public/src/stylesheets/less/*.less',['less']);
 	gulp.watch('./public/src/js/app/**/*.js',['js']);
+	gulp.watch('./public/src/stylesheets/css/*.css',['css']);
 	//gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });

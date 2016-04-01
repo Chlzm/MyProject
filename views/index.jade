@@ -1,14 +1,18 @@
 extend layout
 block content
     body(ng-app="app" ng-controller="PollListCtrl")
-        script(type="text/javascript" src="/src/js/app/index/index.js")
+        script(type="text/javascript" src="dest/js/app/index/index.min.js")
         div.header(ng-click="fn()")
             div.top_link_box
                 div.top_link
-                    | 您好，欢迎来到老年帮123&nbsp;&nbsp;
-                    a(href="#") 注册
-                    | &nbsp; | &nbsp;
-                    a(href="#") 登录{{page}}
+                    | 您好，欢迎来到老年帮&nbsp;&nbsp;
+                    - if({userName})
+                        | #{userName}
+                    -else
+                        a(href="#") 注册
+                            | &nbsp; | &nbsp;
+                        a(href="#") 登录{{page}}
+                    -
             div.logo_area
                 h1.logo_a(title="老年帮，一直最疼我的人，我拿什么来爱你")
                     a(href="#")
@@ -99,32 +103,11 @@ block content
                         a.more(href="#") 更多
                     div.hm_content
                         ul.item
-                            li.find_friend
+                            li.find_friend(ng-repeat="item in friendsList")
                                 div.info_box
-                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
+                                    | 寻找人：{{item.lookForPerson}}<br/>被找人：<strong>{{item.lostPerson}}</strong><br/>被找人信息：{{item.address}}
                                 div.clear
-                                p.state 状态：寻找中
-                                div.clear
-                                a.btn_friend_register(href="#") 注册本站可查看联系方式
-                            li.find_friend
-                                div.info_box
-                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
-                                div.clear
-                                p.state 状态：寻找中
-                                div.clear
-                                a.btn_friend_register(href="#") 注册本站可查看联系方式
-                            li.find_friend
-                                div.info_box
-                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
-                                div.clear
-                                p.state 状态：寻找中
-                                div.clear
-                                a.btn_friend_register(href="#") 注册本站可查看联系方式
-                            li.find_friend
-                                div.info_box
-                                    | 寻找人：何志光<br/>被找人：<strong>李长贵</strong><br/>被找人信息：家住河南省家住河南省鹤壁沈丘县何家庄
-                                div.clear
-                                p.state 状态：寻找中
+                                p.state 状态：{{item.status}}
                                 div.clear
                                 a.btn_friend_register(href="#") 注册本站可查看联系方式
                 div.home_module

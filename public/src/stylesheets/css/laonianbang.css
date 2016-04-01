@@ -61,7 +61,7 @@
 .hm_content .item li .info{height:32px;line-height:32px;border-top:1px solid #eee;margin-top:5px;padding:0 10px;color:#ccc;}
 .hm_content .item li .info span{float:left;}
 .hm_content .item li .info span.right{float:right;}
-.hm_content .item li.find_friend{padding:20px;width:225px;box-shadow:0 0 3px rgba(100,100,100,0.2);}
+.hm_content .item li.find_friend{padding:20px;width:225px;box-shadow:0 0 3px rgba(100,100,100,0.2);box-sizing:border-box;}
 .find_friend .info_box{line-height:24px;font-size:16px;color:#666;overflow:hidden;}
 .find_friend .info_box strong{font-weight:normal;color:#2e8cee;}
 .find_friend .state{float:left;padding:5px 10px;color:#fff;background:#8bc4fe;border-radius:4px;font-size:16px;margin:5px 0;}

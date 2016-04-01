@@ -32,6 +32,14 @@ var opera = new Schema({
     commentCount : Number,
     text : String
 });
+// 找朋友信息推荐
+var friends = new Schema({
+    lookForPerson : String,
+    lostPerson : String,
+    address : String,
+    status : String
+});
 exports.user = db.model('users', userScheMa);
 exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
+exports.friends = db.model('friends1', friends);
