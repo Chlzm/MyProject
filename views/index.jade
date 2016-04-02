@@ -6,20 +6,20 @@ block content
             div.top_link_box
                 div.top_link
                     | 您好，欢迎来到老年帮&nbsp;&nbsp;
-                    - if({userName})
-                        | #{userName}
-                        a(href="#") 退出
+                    - if(userName && userName.length)
+                        span #{userName}&nbsp;
+                        a(href="/logout") 退出
                     -else
-                        a(href="#") 注册
+                        a(href="/register") 注册
                             | &nbsp; | &nbsp;
-                        a(href="#") 登录{{page}}
+                        a(href="/login") 登录
                     -
             div.logo_area
                 h1.logo_a(title="老年帮，一直最疼我的人，我拿什么来爱你")
                     a(href="#")
                         img(src="../dest/images/logo.png" width="467" heigt="95")
                 div.home_search
-                    input.keywords(type="text" value="{{result}}")
+                    input.keywords(type="text" value="" placeholder="请输入关键字")
                     input.hs_btn_submit(type="submit" value="")
         div.content_box(ng-show="show")
             div.content

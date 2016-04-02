@@ -1,0 +1,26 @@
+extend layout
+block content
+	body(ng-app="register" ng-controller="Register")
+		script(type="text/javascript" src="src/js/app/register/register.js")
+		h2(align="center") 用户注册
+		- if(message && message.length)
+			p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}
+		form.form-horizontal(role=form action="/register" method="post")
+			input(type="hidden" name="_csrf" value="")
+			div.form-group
+				label.col-sm-2.control-label(for="fieldName") 用户名：
+				.col-sm-4(ng-if="password")
+					input#fieldName.form-control(type="text" name="name" ng-model="userName")
+				.col-sm-4 {{userName}}
+			div.form-group
+				label.col-sm-2.control-label(for="fieldName") 密码：
+				.col-sm-4
+					input#fieldName.form-control(type="password" name="password" value="" )
+			div.form-group
+				label.col-sm-2.control-label(for="fieldName") 昵称：
+				.col-sm-4
+					input#fieldName.form-control(type="text" name="nickName" value="")
+			div.form-group
+				label.col-sm-2.control-label
+				.col-sm-4
+					input.btn.btn-primary(type="submit" value="提交" ng-disabled="setBtn()")

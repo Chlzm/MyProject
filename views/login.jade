@@ -1,17 +1,20 @@
 extend layout
 block content
-	h2(align="center") 用户登录
-	form.form-horizontal(role=form action="login?form=newsletter" method="post")
-		input(type="hidden" name="_csrf" value="")
-		div.form-group
-			label.col-sm-2.control-label(for="fieldName") 用户名：
-			.col-sm-4
-				input#fieldName.form-control(type="text" name="name" value="")
-		div.form-group
-			label.col-sm-2.control-label(for="fieldName") 密码：
-			.col-sm-4
-				input#fieldName.form-control(type="password" name="password" value="")
-		div.form-group
-			label.col-sm-2.control-label 
-			.col-sm-4
-				input.btn.btn-primary(type="submit" value="登录")
+	body
+		h2(align="center") 用户登录
+		- if(message && message.length)
+			p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}
+		form.form-horizontal(role="form" action="/login" method="post")
+			input(type="hidden" name="_csrf" value="")
+			div.form-group
+				label.col-sm-2.control-label(for="fieldName") 用户名：
+				.col-sm-4
+					input#fieldName.form-control(type="text" name="name" value="")
+			div.form-group
+				label.col-sm-2.control-label(for="fieldName") 密码：
+				.col-sm-4
+					input#fieldName.form-control(type="password" name="password" value="")
+			div.form-group
+				label.col-sm-2.control-label
+				.col-sm-4
+					input.btn.btn-primary(type="submit" value="登录")

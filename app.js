@@ -12,6 +12,7 @@ app.use(cookieParser());
 app.use(session({
 	secret : '000000',
 	name : 'testapp',
+	cookie : {maxAge : 800000},
 	resave : false,
 	saveUninitialized : true
 }));
@@ -45,4 +46,4 @@ var routes = require('./routes')({
     });
 });*/
 //p.get('/thankyou',routes.thankyou);
-app.listen(3001);
+app.listen(3000);

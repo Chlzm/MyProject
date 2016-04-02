@@ -1,9 +1,6 @@
 module.exports = function(o){
     // 首页
     o.app.get('/',function(req,res){
-        if(!req.session.sessname){
-            res.redirect(301,'/login');
-        }
         res.render('index',{title:'首页',userName:req.session.sessname});
     });
     o.app.get('/xiaobao',function(req,res){
@@ -14,19 +11,48 @@ module.exports = function(o){
     });
     // 登录页面
     o.app.get('/login',function(req,res){
-        res.render('login',{title : '用户登录'})
+        res.render('login',{title : '用户登录',message:req.session.message});
     });
-    // 登录接品
+    // 退出登录
+    o.app.get('/logout',function(req,res){
+        req.session.sessname && req.session.destroy('sessname');
+        res.redirect(301,'/');
+    });
+    // 登录接口
     o.app.post('/login',function(req,res){
-        var data = {name:req.body.name,pwd:Number(req.body.password)};
-        o.db.user.count(data,function(err,doc){
-            if(doc){
-                req.session.sessname = req.body.name;
+        var data = {name:req.body.name,pwd:req.body.password};
+        o.db.user.find(data,function(err,doc){
+           /* req.session.sessname = doc[0].nickName;
+            res.redirect(301,'/')*/
+            if(doc.length){
+                req.session.sessname = doc[0].nickName;
                 res.redirect(301,'/')
             }else{
-                res.redirect(301,'/xiaobao');
+                req.session.message = '用户名或密码错误';
+                res.redirect(301,'/login');
             }
         })
+    });
+    // 注册
+    o.app.get('/register',function(req,res){
+        res.render('register',{title:'注册页',message:req.session.registerMessage});
+    });
+    // 注册提交接口
+    o.app.post('/register',function(req,res){
+        var data = {
+            name : req.body.name,
+            password : req.body.password,
+            nickName : req.body.nickName
+        }
+        var info = new o.db.user(data);
+        info.save(function(err){
+            if(err){
+                req.session.registerMessage = "注册失败";
+            }else{
+                req.session.registerMessage = "注册成功";
+            }
+            res.redirect(301,'/register')
+        });
     });
     // 热门知识接口
     o.app.post('/getHotKnowledge',function(req,res){
