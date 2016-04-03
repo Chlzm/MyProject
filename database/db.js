@@ -14,7 +14,7 @@ var Schema = mongoose.Schema;
 // 用户信息
 var userScheMa = new Schema({
     name: String,
-    password: Number,
+    password: String,
     nickName : String
 });
 // 热门知识推荐

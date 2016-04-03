@@ -1,0 +1,34 @@
+extend layout
+block content
+	body(ng-app="app" ng-controller="myControl")
+		script(type="text/javascirpt" src="dest/js/lib/angular.min.js")
+		script(type="text/javascript").
+			var app = angular.module('app',[]);
+			app.controller('myControl',function($scope){
+
+				setTimeout(function () {
+					$scope.$apply(function () {
+						$scope.todos = [{
+							action: "内容1",
+							complete: false
+						}, {
+							action: "内容2",
+							complete: true
+						}, {
+							action: "内容3",
+							complete: false
+						}, {
+							action: "内容4",
+							complete: false
+						}];
+					});
+				}, 2000);
+				$scope.data = {
+					mode : 1
+				};
+
+			});
+		ol
+			li(ng-repeat="item in todos" ng-cloak)
+				| 内容：{{item.action}}
+
