@@ -34,7 +34,7 @@ module.exports = function(o){
         res.render('testAngular',{title:'angular 测试'})
     });
     // 登录页路由
-    require('./login');
+    require('./login')(o);
     // 注册页路曲
-    require('./register');
+    require('./register')(o);
 }
