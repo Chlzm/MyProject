@@ -16,7 +16,7 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
 //var scss = require('gulp-scss-lint');
 
 gulp.task('jade', function(){
-    jadeFiles.forEach(function(jf){
+    jade.forEach(function(jf){
         if(!jf.src || !jf.dest) return;
         gulp.src(jf.src)
             .pipe(jade({petty: true}))
