@@ -10,8 +10,8 @@ block content
 			div.form-group
 				label.col-sm-2.control-label(for="fieldName") 用户名：
 				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="text" name="name" ng-model="userName" ng-keyup="watch(111)")
-				.bg-danger.col-sm-2(ng-if="!userName" style="padding:7px;") 用户名不能为空
+					input#fieldName.form-control(type="text" name="name" ng-model="name" ng-keyup="watch()")
+				.bg-danger.col-sm-2(ng-if="!name" style="padding:7px;") 用户名不能为空
 			div.form-group
 				label.col-sm-2.control-label(for="fieldName") 密码：
 				.col-sm-4(ng-class="!userName && 'has-error'")

@@ -12,13 +12,13 @@
         }
     });
     index.controller('Register',function($scope,$http){
-        $scope.userName = "";      // 用户名
+        $scope.name = "";      // 用户名
         $scope.password = "";      // 密码
         $scope.nickName = "";      // 昵称
         $scope.state = true;
         $scope.watch = function(){
             var state = false;
-            if($scope.userName.length && $scope.password.length && $scope.nickName.length){
+            if($scope.name.length && $scope.password.length && $scope.nickName.length){
                 state = false;
             }else{
                 state = true;
@@ -31,7 +31,7 @@
                     url : '/register',
                     method : 'POST',
                     data : {
-                        userName : $scope.userName,
+                        name : $scope.name,
                         password : $scope.password,
                         nickName : $scope.nickName
                     }
