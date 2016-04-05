@@ -1,16 +1,10 @@
 (function(){
-    var index = angular.module('app', []);
-    /*index.run(function($http){
-
-    });*/
-
+    const index = angular.module('app', []);
     index.controller('PollListCtrl',function($scope,$http){
-        $scope.polls = 343335;
-        $scope.result = "";
-        $scope.fn = () => {
+        $scope.fn1 = () => {
             $scope.result = "电脑";
         }
-        let init = ({
+        const init = ({
             init(){
                 this.getKnowledge();
                 this.getOpera();
@@ -39,7 +33,7 @@
                     data : {
                         aa : 1
                     }
-                }).success(function(result){
+                }).success(result=>{
                     setTimeout(()=>{
                         $scope.$apply(()=>{
                             $scope.operaList = result.result;
