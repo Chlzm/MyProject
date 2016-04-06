@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/chihuo');
 var Schema = mongoose.Schema;
 // 用户信息
-var userScheMa = new Schema({
+var userSchema = new Schema({
     name: String,
     password: String,
     nickName : String
@@ -40,7 +40,7 @@ var friends = new Schema({
     address : String,
     status : String
 });
-exports.user = db.model('users', userScheMa);
+exports.user = db.model('users', userSchema);
 exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
 exports.friends = db.model('friends1', friends);
