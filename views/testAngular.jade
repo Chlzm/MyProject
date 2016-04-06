@@ -4,7 +4,7 @@ block content
 		script(type="text/javascirpt" src="dest/js/lib/angular.min.js")
 		script(type="text/javascript").
 			var app = angular.module('app',[]);
-			app.controller('myControl',function($scope,$filter){
+			app.controller('myControl',function($scope,$http){
 				$scope.todos = [{
 					action: "内容1",
 					complete: false
@@ -37,9 +37,9 @@ block content
 					c : 2
 				}];
 			});
-
 		ol
 			li(ng-repeat="item in todos" ng-class-even="'aaa'" ng-class-odd="'bbb'") {{item}}
+
 
 
 

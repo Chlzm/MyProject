@@ -17,33 +17,25 @@ app.use(session({
 	saveUninitialized : true
 }));
 app.use(bodyParser());
+var privateKey = '36fc3fe98530eea08dfc6ce76e3d24c4';
+var publicKey = 'b46d1900d0a894591916ea94ea91bd2c';
+var geetest = require("./gt-sdk.js")(privateKey, publicKey);
+if(app.get('env') === 'development'){
+    app.use(function(err,req,res,next) {
+       req.status(err.status || 500);
+        res.render('error',{
+            message : err.message,
+            error : err
+        });
+    });
+}
 var routes = require('./routes')({
 	app:app,
-	db : db
+	db : db,
+    geetest : geetest
 });
-//p.get('/hello',routes.hello);
-/*app.get('/',function(req,res){
-	res.render('index',{title:"首页"});
-});*/
-/*app.get('/value',function(req,res){
-	res.render('newsletter');
-})*/
-/*app.post('/user/process?',function(req,res){
-	req.session.lastPage = '/process';
-	res.render('thankyou',{name:'<p>'+req.path+'</p>'});
-});*/
-// 热门知识推荐
-/*app.post('/getHotKnowledge',function(req,res){
-	var query = db.knowledge.find({}).limit(4);
-    query.exec(function(error,data){
-        res.json({result:data})
-    })
-});*/
-//
-/*app.post('/getOpera',function(req,res){
-    db.opera.find({},function(err,doc){
-        res.json({result:doc})
-    });
-});*/
-//p.get('/thankyou',routes.thankyou);
-app.listen(3000);
+if(!module.parent){ 
+    app.listen(3000);
+    console.log('ok')
+}
+module.exports = app;

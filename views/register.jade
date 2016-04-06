@@ -2,6 +2,7 @@ extend layout
 block content
 	body(ng-app="register" ng-controller="Register")
 		script(type="text/javascript" src="dest/js/app/register/register.min.js")
+		script(type="text/javascript" src="src/js/lib/gt.js")
 		h2(align="center") 用户注册
 		- if(message && message.length)
 			p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}
@@ -30,3 +31,4 @@ block content
 				label.col-sm-2.control-label
 				.col-sm-4
 					a.btn.btn-primary(href="javascript:;" ng-disabled="state" ng-click="btnRegister()") 提交
+		div#captcha

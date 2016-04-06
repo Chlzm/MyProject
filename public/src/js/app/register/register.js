@@ -42,13 +42,32 @@
                     }
                 });
             }
-        }
+        };
         var init = ({
             init : function(){
-
+                this._register();
             },
             _register : function(){
-
+                var handler = function(captchaObj){
+                    var success = false;
+                    window.captchaObj = captchaObj;
+                    // 将验证码加到id为captcha的元素里
+                    captchaObj.appendTo("#captcha");
+                    captchaObj.onReady(function () {
+                        $("#wait")[0].className = "hide";
+                    });
+                };
+                $http({
+                    url : '/registerCode',
+                    method : 'get'
+                }).success(function(data){
+                    initGeetest({
+                        gt: data.gt,
+                        challenge: data.challenge,
+                        product: "embed", // 产品形式
+                        offline: !data.success
+                    }, handler);
+                });
             }
         }).init();
         $scope.show = true;

@@ -1,4 +1,5 @@
 module.exports = function(o){
+    
     // 注册
     o.app.get('/register',function(req,res){
         res.render('register',{title:'注册页',message:req.session.registerMessage});
@@ -29,6 +30,36 @@ module.exports = function(o){
                 //res.redirect(301,'/login');
             }
             res.json(data);
+        });
+    });
+
+    o.app.get("/registerCode", function (req, res) {
+        o.geetest.register(function (err, data) {
+            if (err) {
+                res.send(JSON.stringify({
+                    gt: 'b46d1900d0a894591916ea94ea91bd2c',
+                    success: 0
+                }));
+            } else {
+                res.send(JSON.stringify({
+                    gt: 'b46d1900d0a894591916ea94ea91bd2c',
+                    challenge: data,
+                    success: 1
+                }));
+            }
+        });
+    });
+    o.app.post("/validate", function (req, res) {
+        o.geetest.validate({
+            challenge: req.body.geetest_challenge,
+            validate: req.body.geetest_validate,
+            seccode: req.body.geetest_seccode
+        }, function (err, result) {
+            var data = {status: "success"};
+            if (err || !result) {
+                data.status = "fail";
+            }
+            res.send(JSON.stringify(data));
         });
     });
 };

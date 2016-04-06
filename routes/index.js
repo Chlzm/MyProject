@@ -15,7 +15,7 @@ module.exports = function(o){
         query.exec(function(error,data){
             //data.page = req.body.page;
             res.json({result:data})
-        })
+        });
     });
     // 热门戏曲接口
     o.app.post('/getOpera',function(req,res){

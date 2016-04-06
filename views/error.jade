@@ -1,0 +1,6 @@
+extend layout
+block content
+	body
+		h2(align="center") #{message}
+		h3(align="center") #{error.status}
+		pre #{error.stack}
