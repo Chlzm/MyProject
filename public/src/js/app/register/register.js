@@ -54,7 +54,7 @@
                     // 将验证码加到id为captcha的元素里
                     captchaObj.appendTo("#captcha");
                     captchaObj.onReady(function () {
-                        $("#wait")[0].className = "hide";
+                       // $("#wait")[0].className = "hide";
                     });
                 };
                 $http({
