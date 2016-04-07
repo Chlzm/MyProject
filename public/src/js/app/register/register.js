@@ -22,29 +22,32 @@
             }else{
                 $scope.state = true;
             }
-            $scope.btnRegister = function(){
-                let result = $scope.captchaObj.getValidate();
-                if(!result){
-                    alert('验证码错误');
-                    return;
-                }
-                Object.assign(result,{
-                    name : $scope.name,
-                    password : $scope.password,
-                    nickName : $scope.nickName
-                });
-                $http({
-                    url : '/register',
-                    method : 'POST',
-                    data : result
-                }).success(function(result){
-                    if(result && result.status === 'success'){
-                        alert(result.message);
-                        location.href = '/registerSuccess';
-                    }
-                });
-            }
         };
+        // 点击注册按钮
+        $scope.btnRegister = () =>{
+            // 获取验证状态 false or object
+            let result = $scope.captchaObj.getValidate();
+            if(!result){
+                alert('验证码错误');
+                return;
+            }
+            // 合并对象
+            Object.assign(result,{
+                name : $scope.name,
+                password : $scope.password,
+                nickName : $scope.nickName
+            });
+            $http({
+                url : '/register',
+                method : 'POST',
+                data : result
+            }).success(result =>{
+                if(result && result.status === 'success'){
+                    alert(result.message);
+                    location.href = '/registerSuccess';
+                }
+            });
+        }
         var init = ({
             init : function(){
                 this._register();
@@ -64,7 +67,7 @@
                     initGeetest({
                         gt: data.gt,
                         challenge: data.challenge,
-                        product: "embed", // 产品形式
+                        product: "float", // 产品形式
                         offline: !data.success
                     }, handler);
                 });
