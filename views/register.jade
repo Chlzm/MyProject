@@ -16,13 +16,16 @@ block content
 			div.form-group
 				label.col-sm-2.control-label(for="fieldName") 密码：
 				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="password" name="password" ng-model="password" ng-keyup="watch")
+					input#fieldName.form-control(type="password" name="password" ng-model="password" ng-keyup="watch()")
 				.bg-danger.col-sm-2(ng-if="!password" style="padding:7px;") 密码不能为空
 			div.form-group
 				label.col-sm-2.control-label(for="fieldName") 昵称：
 				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="text" name="nickName" ng-model="nickName" ng-keyup="watch")
+					input#fieldName.form-control(type="text" name="nickName" ng-model="nickName" ng-keyup="watch()")
 				.bg-danger.col-sm-2(ng-if="!nickName" style="padding:7px;") 昵称不能为空
+			div.form-group
+				label.col-sm-2.control-label
+				#captcha.col-sm-4
 			div.form-group(style="display:none;")
 				label.col-sm-2.control-label
 				.col-sm-4
@@ -31,4 +34,3 @@ block content
 				label.col-sm-2.control-label
 				.col-sm-4
 					a.btn.btn-primary(href="javascript:;" ng-disabled="state" ng-click="btnRegister()") 提交
-		div#captcha
