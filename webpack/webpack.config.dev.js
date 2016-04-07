@@ -4,6 +4,7 @@ var devConfig = Object.create(baseConfig);
 
 devConfig.debug = true;
 devConfig.watch = true;
+devConfig.profile = true;
 // devConfig.devtool = 'cheap-module-eval-source-map'
 
 devConfig.plugins.push(

@@ -51,11 +51,10 @@
             },
             _register : function(){
                 var handler = function(captchaObj){
-                    var success = false;
                     $scope.captchaObj = captchaObj;
-                    // 将验证码加到id为captcha的元素里
                     $scope.captchaObj.appendTo("#captcha");
                     $scope.captchaObj.onReady(function () {
+                        //...
                     });
                 };
                 $http({

@@ -2,7 +2,7 @@
     const index = angular.module('app', []);
     index.controller('PollListCtrl',function($scope,$http){
         $scope.fn1 = () => {
-            $scope.result = "电脑";
+            $scope.result = "电脑1111";
         }
         const init = ({
             init(){

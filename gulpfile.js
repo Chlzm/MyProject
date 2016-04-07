@@ -72,13 +72,13 @@ gulp.task('libjs',function(){
 gulp.task('less',function(){
 	gulp.src('public/src/stylesheets/less/*.less')
 	.pipe(less())
-	.pipe(gulp.dest('public/dest/stylesheets/css'))
+	.pipe(gulp.dest('public/dest/stylesheets'))
 });
 //编译sass
 gulp.task('scss',function(){
 	gulp.src('public/src/stylesheets/sass/*.sass')
 	.pipe(scss({style:'compact'}))
-	.pipe(gulp.dest('public/dest/stylesheets/css'))
+	.pipe(gulp.dest('public/dest/stylesheets'))
 });
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);

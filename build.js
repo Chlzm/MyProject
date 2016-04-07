@@ -73,6 +73,7 @@ function runWebpack(moduleName, baseConfig, isProduction) {
 
     return new Promise(function(resolve, reject) {
         var count = 0
+        console.log(config.watch)
         webpack(config, function(err, stats) {
             if (err) {
                 reject(err)

@@ -6,7 +6,8 @@ var path = require('path')
 var rootPath = path.dirname(__dirname)
 var vacationLibPath = path.join(rootPath, 'public/dest/js/lib')
 var vacationAppPath = path.join(rootPath, 'public/dest/js/app')
-var vacationAppCssPath = path.join(rootPath, 'public/dest/stylesheets/css')
+var vacationAppCssPath = path.join(rootPath, 'public/dest/stylesheets/css');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // 打包每个页面 js 的配置
 
 var pageConfigs = {
@@ -32,10 +33,9 @@ var pageConfigs = {
     },
     testLess : {
         entry : ['./public/src/stylesheets/less/main'],
-        output : {
-            path : vacationAppCssPath,
-            filename : '[name].min.css'
-        }
+        plugins : [
+            new ExtractTextPlugin('./public/dest/stylesheets/[name].min.css')
+        ]
     }
 };
 

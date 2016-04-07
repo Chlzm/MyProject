@@ -1,19 +1,20 @@
-@color: #555;
-@base-color:#111;
-@the-border:1px;
+@color: #666;
+@base-color:#322;
+@the-border:4px;
 #header {
-  color: @color;
-  a{
-    color:(@base-color * 4);
-    border-wdith:(@the-border * 5);
-    .test{
-      color:blue;
-    };
-    &:hover{
-      text-decoration:underline;
+    color: @color;
+    background:@base-color;
+    a{
+        color:(@base-color * 8);
+        .test{
+            color:greenyellow;
+        };
+        &:hover{
+            text-decoration:underline;
+        }
     }
-  }
+
 }
 h2 {
-  color: @color;
+    color: @color;
 }
