@@ -48,11 +48,15 @@ function runWebpack(moduleName, baseConfig, isProduction) {
     var outputType = typeof moduleConfig.output
 
     // merge moduleConfit to config
-    Object.assign(config, moduleConfig)
+    Object.assign(config, moduleConfig);
 
     // handle entry
-    config.entry = {}
-    config.entry[moduleName] = moduleConfig.entry
+    config.entry = {};
+    if(typeof moduleConfig.entry === 'object' && !moduleConfig.entry.length){
+        config.entry = moduleConfig.entry;
+    }else{
+        config.entry[moduleName] = moduleConfig.entry;
+    }
 
     // handle output
     if (outputType === 'string') {

@@ -1,9 +1,9 @@
-var webpack = require('webpack')
-var baseConfig = require('./webpack.config.base')
-var devConfig = Object.create(baseConfig)
+var webpack = require('webpack');
+var baseConfig = require('./webpack.config.base');
+var devConfig = Object.create(baseConfig);
 
-devConfig.debug = true
-devConfig.watch = true
+devConfig.debug = true;
+devConfig.watch = true;
 // devConfig.devtool = 'cheap-module-eval-source-map'
 
 devConfig.plugins.push(
@@ -13,6 +13,6 @@ devConfig.plugins.push(
         }
     }),
     new webpack.NoErrorsPlugin()
-)
+);
 
-module.exports = devConfig
+module.exports = devConfig;

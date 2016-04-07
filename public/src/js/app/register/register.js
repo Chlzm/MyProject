@@ -6,7 +6,7 @@
             link : function(scope,elem,attrs){
                 var functionToCall = scope.$eval(attrs.ngKeyup);
                 elem.on('keyup', function(e){
-                    functionToCall(e.which);
+                    functionToCall && functionToCall(e.which);
                 });
             }
         }
@@ -17,26 +17,28 @@
         $scope.nickName = "";      // 昵称
         $scope.state = true;
         $scope.watch = function(){
-            var state = false;
             if($scope.name.length && $scope.password.length && $scope.nickName.length){
-                state = false;
+                $scope.state = false;
             }else{
-                state = true;
+                $scope.state = true;
             }
-            $scope.$apply(function(){
-                $scope.state = state;
-            });
             $scope.btnRegister = function(){
+                let result = $scope.captchaObj.getValidate();
+                if(!result){
+                    alert('验证码错误');
+                    return;
+                }
+                Object.assign(result,{
+                    name : $scope.name,
+                    password : $scope.password,
+                    nickName : $scope.nickName
+                });
                 $http({
                     url : '/register',
                     method : 'POST',
-                    data : {
-                        name : $scope.name,
-                        password : $scope.password,
-                        nickName : $scope.nickName
-                    }
+                    data : result
                 }).success(function(result){
-                    if(result && result.state === 1){
+                    if(result && result.status === 'success'){
                         alert(result.message);
                         location.href = '/registerSuccess';
                     }
@@ -50,11 +52,10 @@
             _register : function(){
                 var handler = function(captchaObj){
                     var success = false;
-                    window.captchaObj = captchaObj;
+                    $scope.captchaObj = captchaObj;
                     // 将验证码加到id为captcha的元素里
-                    captchaObj.appendTo("#captcha");
-                    captchaObj.onReady(function () {
-                       // $("#wait")[0].className = "hide";
+                    $scope.captchaObj.appendTo("#captcha");
+                    $scope.captchaObj.onReady(function () {
                     });
                 };
                 $http({

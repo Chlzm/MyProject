@@ -2,7 +2,7 @@ extend layout
 block content
 	body(ng-app="register" ng-controller="Register")
 		script(type="text/javascript" src="dest/js/app/register/register.min.js")
-		script(type="text/javascript" src="src/js/lib/gt.js")
+		script(type="text/javascript" src="dest/js/lib/gt.min.js")
 		h2(align="center") 用户注册
 		- if(message && message.length)
 			p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}

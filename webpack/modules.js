@@ -42,10 +42,10 @@ var pageConfigs = {
 // 打包库的配置
 var libConfigs = {
     vendor: {
-        entry: './lib/index',
+        entry:{'gt':'./public/src/js/lib/gt.js'},
         output: {
             path: vacationLibPath,
-            filename: '[name].js',
+            filename: '[name].min.js',
             libraryTarget: 'umd'
         },
         resolve: {

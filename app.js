@@ -17,9 +17,6 @@ app.use(session({
 	saveUninitialized : true
 }));
 app.use(bodyParser());
-var privateKey = '36fc3fe98530eea08dfc6ce76e3d24c4';
-var publicKey = 'b46d1900d0a894591916ea94ea91bd2c';
-var geetest = require("./gt-sdk.js")(privateKey, publicKey);
 if(app.get('env') === 'development'){
     app.use(function(err,req,res,next) {
        req.status(err.status || 500);
@@ -31,8 +28,7 @@ if(app.get('env') === 'development'){
 }
 var routes = require('./routes')({
 	app:app,
-	db : db,
-    geetest : geetest
+	db : db
 });
 if(!module.parent){ 
     app.listen(3000);

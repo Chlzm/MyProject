@@ -1,5 +1,9 @@
 module.exports = function(o){
-    
+    var path = require('path');
+    var rootPath = path.dirname(__dirname);
+    var privateKey = '36fc3fe98530eea08dfc6ce76e3d24c4';
+    var publicKey = 'b46d1900d0a894591916ea94ea91bd2c';
+    var geetest = require(rootPath + "/gt-sdk.js")(privateKey, publicKey);
     // 注册
     o.app.get('/register',function(req,res){
         res.render('register',{title:'注册页',message:req.session.registerMessage});
@@ -14,35 +18,42 @@ module.exports = function(o){
             password : req.body.password,
             nickName : req.body.nickName
         };
-        var info = new o.db.user(data);
-        info.save(function(err){
-            var data = {
-                state : 0,
-                message : '注册失败'
+        geetest.validate({
+            challenge: req.body.geetest_challenge,
+            validate: req.body.geetest_validate,
+            seccode: req.body.geetest_seccode
+        },function (err, result) {
+            var obj = {
+                status: "success",
+                message : '注册成功'
             };
-            if(err){
-                req.session.registerMessage = "注册失败";
-                //res.redirect(301,'/register');
+            if (err || !result) {
+                obj.status = "fail";
+                obj.message = "注册失败";
             }else{
-                req.session.registerMessage && req.session.registerMessage.destroy();
-                data.state = 1;
-                data.message = '注册成功'
-                //res.redirect(301,'/login');
+                var info = new o.db.user(data);
+                info.save(function(err){
+                    if(err){
+                        req.session.registerMessage = "注册失败";
+                    }else{
+                        req.session.registerMessage && req.session.registerMessage.destroy();
+                    }
+                });
             }
-            res.json(data);
+            res.json(obj);
         });
     });
 
     o.app.get("/registerCode", function (req, res) {
-        o.geetest.register(function (err, data) {
+        geetest.register(function (err, data) {
             if (err) {
                 res.send(JSON.stringify({
-                    gt: 'b46d1900d0a894591916ea94ea91bd2c',
+                    gt: publicKey,
                     success: 0
                 }));
             } else {
                 res.send(JSON.stringify({
-                    gt: 'b46d1900d0a894591916ea94ea91bd2c',
+                    gt: publicKey,
                     challenge: data,
                     success: 1
                 }));
@@ -50,16 +61,6 @@ module.exports = function(o){
         });
     });
     o.app.post("/validate", function (req, res) {
-        o.geetest.validate({
-            challenge: req.body.geetest_challenge,
-            validate: req.body.geetest_validate,
-            seccode: req.body.geetest_seccode
-        }, function (err, result) {
-            var data = {status: "success"};
-            if (err || !result) {
-                data.status = "fail";
-            }
-            res.send(JSON.stringify(data));
-        });
+
     });
 };

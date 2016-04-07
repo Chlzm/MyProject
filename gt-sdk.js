@@ -1,5 +1,4 @@
 "use strict";
-
 var crypto = require('crypto'),
     request = require('request'),
     pkg = require("./package.json");
