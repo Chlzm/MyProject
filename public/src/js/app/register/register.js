@@ -12,7 +12,7 @@
         }
     });
     index.controller('Register',function($scope,$http){
-        $scope.name = "";      // 用户名
+        $scope.name = "";      // 用户名22333
         $scope.password = "";      // 密码
         $scope.nickName = "";      // 昵称
         $scope.state = true;
@@ -25,22 +25,14 @@
         };
         // 点击注册按钮
         $scope.btnRegister = () =>{
-            // 获取验证状态 false or object
-            let result = $scope.captchaObj.getValidate();
-            if(!result){
-                alert('验证码错误');
-                return;
-            }
-            // 合并对象
-            Object.assign(result,{
-                name : $scope.name,
-                password : $scope.password,
-                nickName : $scope.nickName
-            });
             $http({
                 url : '/register',
                 method : 'POST',
-                data : result
+                data : {
+                    name : $scope.name,
+                    password : $scope.password,
+                    nickName : $scope.nickName
+                }
             }).success(result =>{
                 if(result && result.status === 'success'){
                     alert(result.message);
@@ -67,7 +59,7 @@
                     initGeetest({
                         gt: data.gt,
                         challenge: data.challenge,
-                        product: "float", // 产品形式
+                        product: "float", // 产品形式234234
                         offline: !data.success
                     }, handler);
                 });

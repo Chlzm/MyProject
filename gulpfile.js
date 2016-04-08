@@ -3,6 +3,8 @@ var jade = require('gulp-jade');
 var less = require('gulp-less');
 var scss = require('gulp-ruby-sass-ns');
 var ngmin = require('gulp-ngmin');
+var webpack = require('gulp-webpack'); 
+var webpackConfig = require('./webpack.config');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
     imagemin = require('gulp-imagemin'),//图片压缩
@@ -63,6 +65,11 @@ gulp.task('js', function() {
         .pipe(gulp.dest('public/dest/js/app'))
         //.pipe(notify({ message: 'js task ok' }));
 });
+gulp.task('webpackJs',function(){
+   return gulp.src('public/src/js/app/**/*.js')
+       .pipe(webpack(webpackConfig))
+       .pipe(gulp.dest('public/dest/js/app'))
+});
 gulp.task('libjs',function(){
     return gulp.src('public/src/js/lib/**.js')
         .pipe(uglify())
@@ -83,7 +90,7 @@ gulp.task('scss',function(){
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);
 	gulp.watch('./public/src/stylesheets/less/*.less',['less']);
-	gulp.watch('./public/src/js/app/**/*.js',['js']);
+	gulp.watch('./public/src/js/app/**/*.js',['webpackJs']);
 	gulp.watch('./public/src/stylesheets/css/*.css',['css']);
 	//gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
