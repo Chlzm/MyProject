@@ -12,7 +12,7 @@
         }
     });
     index.controller('Register',function($scope,$http){
-        $scope.name = "";      // 用户名22333
+        $scope.name = "";      // 用户名
         $scope.password = "";      // 密码
         $scope.nickName = "";      // 昵称
         $scope.state = true;
@@ -34,35 +34,14 @@
                     nickName : $scope.nickName
                 }
             }).success(result =>{
-                if(result && result.status === 'success'){
+                if(result && result.errorNumber === 1){
                     alert(result.message);
                     location.href = '/registerSuccess';
                 }
             });
-        }
+        };
         var init = ({
-            init : function(){
-                this._register();
-            },
-            _register : function(){
-                var handler = function(captchaObj){
-                    $scope.captchaObj = captchaObj;
-                    $scope.captchaObj.appendTo("#captcha");
-                    $scope.captchaObj.onReady(function () {
-                        //...
-                    });
-                };
-                $http({
-                    url : '/registerCode',
-                    method : 'get'
-                }).success(function(data){
-                    initGeetest({
-                        gt: data.gt,
-                        challenge: data.challenge,
-                        product: "float", // 产品形式234234
-                        offline: !data.success
-                    }, handler);
-                });
+            init(){
             }
         }).init();
         $scope.show = true;

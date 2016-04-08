@@ -36,7 +36,7 @@ module.exports = function(o){
                         req.session.sessname = doc[0].nickName;
                         res.json({
                             errorNumber : 1,
-                            errorMessage : '登录成功'
+                            message : '登录成功'
                         });
                         //res.redirect(301,'/')
                     }else{

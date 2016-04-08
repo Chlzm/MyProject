@@ -22,10 +22,6 @@ block content
 				.col-sm-4(ng-class="!userName && 'has-error'")
 					input#fieldName.form-control(type="text" name="nickName" ng-model="nickName" ng-keyup="watch()")
 				.bg-danger.col-sm-2(ng-if="!nickName" style="padding:7px;") 昵称不能为空
-			div.form-group(style="display:none;")
-				label.col-sm-2.control-label
-				.col-sm-4
-					input.btn.btn-primary(type="submit" value="提交" ng-disabled="state")
 			div.form-group
 				label.col-sm-2.control-label
 				.col-sm-4

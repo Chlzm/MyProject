@@ -8,6 +8,10 @@ module.exports = function(o){
     });
     // 注册提交接口
     o.app.post('/register',function(req,res){
+        var obj = {
+            errorNumber : 1,
+            message : '登录成功'
+        };
         var data = {
             name : req.body.name,
             password : req.body.password,
@@ -16,13 +20,14 @@ module.exports = function(o){
         var info = new o.db.user(data);
         info.save(function(err){
             if(err){
+                obj.errorNumber = 0;
+                obj.message = "注册失败"
                 req.session.registerMessage = "注册失败";
             }else{
                 req.session.registerMessage && req.session.registerMessage.destroy();
             }
             res.json(obj);
         });
-        
     });
     
 };
