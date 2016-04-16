@@ -41,16 +41,26 @@ block content
 					b: 3,
 					c : 2
 				}];
-				$http({
-					url : '/getAngularInfo',
-					method : 'post'
-				}).success(function(result){
-					debugger;
-				})
+				$scope.dataList = [];
+				$scope.userName = "";
+				$scope.search = function(){
+					$http({
+						url : '/getAngularInfo',			// 调后台接口
+						method : 'post',
+						data:{
+							name: $scope.userName
+						}
+					}).success(function(result){
+						$scope.dataList = result.data;
+					})
+				}
 			});
 		select.form-control(ng-model="aaa" ng-options="item.action group by item.id for item in todos")
 			option(value="") 请选择
-		div {{aaa}}
+		input.form-control(type="text" ng-model="userName")
+		input.btn.btn-success(type="button" value="搜索" ng-click="search()")
+		ul
+			li(ng-repeat="item in dataList") {{item.name}}
 
 
 

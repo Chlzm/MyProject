@@ -1,7 +1,8 @@
 module.exports = function(o){
-    // 注册
+    // 后台接口
     o.app.post('/getAngularInfo',function(req,res){
-        o.db.info2.find({},function(err,doc){
+        var result = req.body.name ? {name:req.body.name} : {};
+        o.db.info2.find(result,function(err,doc){
             if(doc.length){
                 res.json({
                     errorNumber : 1,
@@ -15,6 +16,4 @@ module.exports = function(o){
             }
         })
     });
-    
-    
 };
