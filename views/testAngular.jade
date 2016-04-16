@@ -41,7 +41,12 @@ block content
 					b: 3,
 					c : 2
 				}];
-
+				$http({
+					url : '/getAngularInfo',
+					method : 'post'
+				}).success(function(result){
+					debugger;
+				})
 			});
 		select.form-control(ng-model="aaa" ng-options="item.action group by item.id for item in todos")
 			option(value="") 请选择

@@ -37,4 +37,6 @@ module.exports = function(o){
     require('./login')(o);
     // 注册页路曲
     require('./register')(o);
+    // 
+    require('./testAngular')(o);
 }
