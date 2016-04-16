@@ -1,28 +1,25 @@
 extend layout
 block content
-	body(ng-app="register" ng-controller="Register")
+	body.container(ng-app="register" ng-controller="Register")
 		script(type="text/javascript" src="dest/js/app/register/register.min.js")
-		h2(align="center") 用户注册
-		- if(message && message.length)
-			p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}
-		form.form-horizontal(role=form action="/register" method="post")
-			input(type="hidden" name="_csrf" value="")
-			div.form-group
-				label.col-sm-2.control-label(for="fieldName") 用户名：
-				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="text" name="name" ng-model="name" ng-keyup="watch()")
-				.bg-danger.col-sm-2(ng-if="!name" style="padding:7px;") 用户名不能为空
-			div.form-group
-				label.col-sm-2.control-label(for="fieldName") 密码：
-				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="password" name="password" ng-model="password" ng-keyup="watch()")
-				.bg-danger.col-sm-2(ng-if="!password" style="padding:7px;") 密码不能为空
-			div.form-group
-				label.col-sm-2.control-label(for="fieldName") 昵称：
-				.col-sm-4(ng-class="!userName && 'has-error'")
-					input#fieldName.form-control(type="text" name="nickName" ng-model="nickName" ng-keyup="watch()")
-				.bg-danger.col-sm-2(ng-if="!nickName" style="padding:7px;") 昵称不能为空
-			div.form-group
-				label.col-sm-2.control-label
-				.col-sm-4
-					a.btn.btn-primary(href="javascript:;" ng-disabled="state" ng-click="btnRegister()") 提交
+		.row
+			.col-xs-12
+				h2(align="center") 用户注册
+				- if(message && message.length)
+					p.bg-warning(align="center" style="height:30px;line-height:30px;") #{message}
+				form.form-horizontal(role=form action="/register" method="post" name="rf" novalidate)
+					input(type="hidden" name="_csrf" value="")
+					div.form-group(ng-class="(rf.name.$invalid && rf.name.$dirty) ? 'has-error' : ''")
+						label(for="fieldName") 用户名：
+						input#fieldName.form-control(ng-pattern="isNumber" type="text" name="name" ng-model="name" required)
+					div.form-group(ng-class="(rf.password.$invalid && rf.password.$dirty) ? 'has-error' : ''")
+						label(for="fieldName") 密码：
+						input#fieldName.form-control(type="password" name="password" required  ng-model="password" )
+					div.form-group(ng-class="(rf.nickName.$invalid && rf.nickName.$dirty) ? 'has-error' : ''")
+						label(for="fieldName") 昵称：
+						input#fieldName.form-control(type="text" name="nickName" ng-model="nickName" required)
+					div.form-group
+						input.btn.btn-primary.btn-block(type="button" ng-disabled="rf.$invalid" ng-click="btnRegister()" value="提交")
+					div.form-group
+						input(type="checkbox" ng-model="checkValue" ng-true-value="123" ng-false-value="345")
+						| {{checkValue}}
