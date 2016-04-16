@@ -60,7 +60,11 @@ block content
 		input.form-control(type="text" ng-model="userName")
 		input.btn.btn-success(type="button" value="搜索" ng-click="search()")
 		ul
-			li(ng-repeat="item in dataList") {{item.name}}
+			li(ng-repeat="item in dataList")
+				p(ng-repeat="i in item.a1")
+					span 姓名：{{i.name}}
+					span 年龄：{{i.age}}
+					span 性别：{{i.sex}}
 
 
 
