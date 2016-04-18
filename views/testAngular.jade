@@ -5,6 +5,7 @@ block content
 		script(type="text/javascirpt" src="dest/js/lib/angular.min.js")
 		script(type="text/javascript").
 			var app = angular.module('app',[]);
+
 			app.controller('myControl',function($scope,$http){
 				$scope.todos = [{
 					id : 5,
@@ -55,10 +56,33 @@ block content
 					})
 				}
 			});
+			app.directive('sbtn', function () {
+				return {
+					restrict: 'EA',
+					scope : {
+						type : '@value'
+					},
+					template : '<div><botton>{{type}}</botton></div>',
+					replace : true,
+					link : function(scope){
+						scope.type = 12
+					},
+					compile: function (element, attrs) {
+						element.addClass('btn');
+						if (attrs.type == 'button') {
+							element.addClass('btn-primary');
+						}
+						if (attrs.size) {
+							element.addClass('btn-' + attrs.size);
+						}
+					}
+				}
+			});
 		select.form-control(ng-model="aaa" ng-options="item.action group by item.id for item in todos")
 			option(value="") 请选择
 		input.form-control(type="text" ng-model="userName")
-		input.btn.btn-success(type="button" value="搜索" ng-click="search()")
+		input(type="button" value="搜索" ng-click="search()" sbtn)
+		sbtn(type="button" value="查找")
 		ul
 			li(ng-repeat="item in dataList")
 				p(ng-repeat="i in item.a1")
