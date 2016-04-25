@@ -1,20 +1,26 @@
 extend layout
 block content
-	body(ng-app="app" ng-controller="myControl")
+	body.container(ng-app="app" ng-controller="myControl")
+		link(type="text/css" rel="stylesheet" href="dest/stylesheets/testAngular.css")
 		script(type="text/javascirpt" src="dest/js/lib/angular.min.js")
 		script(type="text/javascript").
 			var app = angular.module('app',[]);
+
 			app.controller('myControl',function($scope,$http){
 				$scope.todos = [{
+					id : 5,
 					action: "内容1",
 					complete: false
 				}, {
+					id : 2,
 					action: "内容2",
 					complete: true
 				}, {
+					id : 3,
 					action: "内容3",
 					complete: false
 				}, {
+					id : 4,
 					action: "内容0",
 					complete: false,
 					className : 'aaa'
@@ -36,9 +42,53 @@ block content
 					b: 3,
 					c : 2
 				}];
+				$scope.dataList = [];
+				$scope.userName = "";
+				$scope.search = function(){
+					$http({
+						url : '/getAngularInfo',			// 调后台接口
+						method : 'post',
+						data:{
+							name: $scope.userName
+						}
+					}).success(function(result){
+						$scope.dataList = result.data;
+					})
+				}
 			});
-		ol
-			li(ng-repeat="item in todos" ng-class-even="'aaa'" ng-class-odd="'bbb'") {{item}}
+			app.directive('sbtn', function () {
+				return {
+					restrict: 'EA',
+					scope : {
+						type : '@value'
+					},
+					template : '<div><botton>{{type}}</botton></div>',
+					replace : true,
+					link : function(scope){
+						scope.type = 12
+					},
+					compile: function (element, attrs) {
+						element.addClass('btn');
+						if (attrs.type == 'button') {
+							element.addClass('btn-primary');
+						}
+						if (attrs.size) {
+							element.addClass('btn-' + attrs.size);
+						}
+					}
+				}
+			});
+		select.form-control(ng-model="aaa" ng-options="item.action group by item.id for item in todos")
+			option(value="") 请选择
+		input.form-control(type="text" ng-model="userName")
+		input(type="button" value="搜索" ng-click="search()" sbtn)
+		sbtn(type="button" value="查找")
+		ul
+			li(ng-repeat="item in dataList")
+				p(ng-repeat="i in item.a1")
+					span 姓名：{{i.name}}
+					span 年龄：{{i.age}}
+					span 性别：{{i.sex}}
 
 
 

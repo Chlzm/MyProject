@@ -10,7 +10,7 @@ module.exports = function(o){
     o.app.post('/register',function(req,res){
         var obj = {
             errorNumber : 1,
-            message : '登录成功'
+            message : '注册成功'
         };
         var data = {
             name : req.body.name,

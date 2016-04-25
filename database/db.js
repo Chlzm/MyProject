@@ -40,7 +40,11 @@ var friends = new Schema({
     address : String,
     status : String
 });
+var info = new Schema({
+    name : String
+});
 exports.user = db.model('users', userSchema);
 exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
 exports.friends = db.model('friends1', friends);
+exports.info2 = db.model('info1',info);

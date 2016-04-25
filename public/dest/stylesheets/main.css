@@ -1,16 +1,21 @@
+/*
+@color: #636;
+@base-color:#444;
+@the-border:4px;
 #header {
-  color: #666;
-  background: #322;
-}
-#header a {
-  color: #ffffff;
-}
-#header a .test {
-  color: greenyellow;
-}
-#header a:hover {
-  text-decoration: underline;
+    color: @color;
+    background:@base-color;
+    a{
+        color:(@base-color * 8);
+        .test{
+            color:greenyellow;
+        };
+        &:hover{
+            text-decoration:underline;
+        }
+    }
+
 }
 h2 {
-  color: #666;
-}
+    color: @color;
+}*/

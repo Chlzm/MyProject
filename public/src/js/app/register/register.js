@@ -25,6 +25,10 @@
         };
         // 点击注册按钮
         $scope.btnRegister = () =>{
+            if($scope.rf.$invalid){
+                console.log($scope.rf)
+                return;
+            }
             $http({
                 url : '/register',
                 method : 'POST',
@@ -39,7 +43,9 @@
                     location.href = '/registerSuccess';
                 }
             });
+
         };
+        $scope.isNumber = /\d/;
         var init = ({
             init(){
             }

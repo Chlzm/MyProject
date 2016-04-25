@@ -47,10 +47,10 @@ gulp.task('image', function() {
 gulp.task('css', function() {
     return gulp.src('public/src/stylesheets/css/*.css')
         .pipe(concat('all.css'))
-        .pipe(gulp.dest('public/dest/stylesheets/css'))
+        .pipe(gulp.dest('public/dest/stylesheets'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest('public/dest/stylesheets/css'))
+        .pipe(gulp.dest('public/dest/stylesheets'))
         //.pipe(notify({ message: 'css task ok' }));
 });
 // 合并、压缩js文件
