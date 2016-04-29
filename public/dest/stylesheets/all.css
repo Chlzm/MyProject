@@ -50,7 +50,7 @@ ul,ol{list-style:none;}
 .logo_area .logo_a{float:left;display:block;}
 .home_search{float:right;width:332px;margin-top:28px;border:1px solid #ddd;padding:2px;overflow:hidden;zoom:1;border-radius:4px;}
 .home_search input.keywords{width:279px;height:28px;line-height:28px;padding:2px 5px;display:block;float:left;border:0 none;color:#999;}
-.home_search input.hs_btn_submit{cursor:pointer;display:block;width:43px;height:32px;line-height:32px;float:right;background:url("../../images/icon_png24.png") no-repeat 10px 5px #eae9e9;border-radius:4px;border:0 none;}
+.home_search input.hs_btn_submit{cursor:pointer;display:block;width:43px;height:32px;line-height:32px;float:right;background:url("../images/icon_png24.png") no-repeat 10px 5px #eae9e9;border-radius:4px;border:0 none;}
 /*头部结束*/
 
 /*正文内容开始*/
@@ -78,7 +78,7 @@ ul,ol{list-style:none;}
 .banner_list li .box h3{height:60px;line-height:60px;margin:0;padding:0 0 0 25px;font-weight:normal;color:#fff;font-size:22px;cursor:pointer;}
 .banner_list li .box h3.attention{color:#d6854f;}
 .banner_list li .box h3 strong{font-weight:normal;float:left;display:block;height:60px;text-shadow:1px 1px 2px rgba(0,0,0,0.5);}
-.banner_list li .box h3 em{float:left;display:block;width:60px;height:60px;line-height:60px;background:url("../../images/nav_icon.png") no-repeat;margin-left:5px;cursor:pointer;}
+.banner_list li .box h3 em{float:left;display:block;width:60px;height:60px;line-height:60px;background:url("../images/nav_icon.png") no-repeat;margin-left:5px;cursor:pointer;}
 .banner_list li .box h3 em.mouse{background-position:-23px 2px;;margin-left:0;}
 .banner_list li .box h3 em.earplug{background-position:-10px -72px;}
 .banner_list li .box h3 em.person{background-position:-10px -150px;}
@@ -92,7 +92,7 @@ ul,ol{list-style:none;}
 .banner_list li .box:hover{text-decoration:none;}
 .home_module{margin-top:15px;background:#fff;}
 .hm_header{position:relative;height:52px;border-top:5px solid #4c7199;}
-.hm_header h2{margin:0;position:absolute;width:227px;padding:0 0 0 55px;height:52px;line-height:42px;top:-5px;left:-26px;background:url("../../images/bg_png_8.png") no-repeat;font:20px/42px '微软雅黑';font-weight:normal;color:#fff;}
+.hm_header h2{margin:0;position:absolute;width:227px;padding:0 0 0 55px;height:52px;line-height:42px;top:-5px;left:-26px;background:url("../images/bg_png_8.png") no-repeat;font:20px/42px '微软雅黑';font-weight:normal;color:#fff;}
 .hm_header a.more{display:block;height:36px;line-height:36px;float:right;margin-right:28px;font-size:14px;}
 .hm_content{padding:0 0 10px 28px;}
 .hm_content .item{overflow:hidden;zoom:1;padding:2px;}
@@ -115,7 +115,7 @@ ul,ol{list-style:none;}
 .banner_scroll a{display:block;float:left;}
 .banner_s1,.banner_clone{float:left;}
 .banner_num{position:absolute;bottom:10px;right:10px;overflow:hidden;zoom:1;}
-.banner_num li{float:left;width:24px;height:24px;line-height:24px;text-align:center;background:url(../../images/card_view_btn.png) no-repeat -36px -176px;color:#fff;margin-left:5px;cursor:pointer;}
+.banner_num li{float:left;width:24px;height:24px;line-height:24px;text-align:center;background:url(../images/card_view_btn.png) no-repeat -36px -176px;color:#fff;margin-left:5px;cursor:pointer;}
 .banner_num li.select{background-position:0 -176px;cursor:pointer;}
 .banner_box_t{width:325px;overflow:hidden;height:230px;position:relative;}
 .banner_sub_t{width:325px;overflow:hidden;position:absolute;height:230px;}
@@ -150,7 +150,7 @@ ul,ol{list-style:none;}
 .ffm_header{overflow:hidden;zoom:1;padding:10px 28px;}
 .ffm_header h2{float:left;height:32px;line-height:32px;font-weight:normal;color:#2e8cee;}
 .btn_right_area{float:right;}
-.btn_right_area button{width:111px;height:32px;line-height:32px;vertical-align:middle;border:0;cursor:pointer;padding:0 10px;background:url("../../images/find_friend_bg.png") no-repeat;color:#fff;font-size:16px;}
+.btn_right_area button{width:111px;height:32px;line-height:32px;vertical-align:middle;border:0;cursor:pointer;padding:0 10px;background:url("../images/find_friend_bg.png") no-repeat;color:#fff;font-size:16px;}
 .btn_right_area a{vertical-align:middle;margin-left:20px;}
 /*找朋友页结束*/
 
@@ -170,20 +170,20 @@ ul,ol{list-style:none;}
 .wish li{overflow:hidden;zoom:1;padding-right:28px;margin-bottom:20px;}
 .wish li:last-child{margin-bottom:0;}
 .person_photo{float:left;width:72px;}
-.person_photo p{padding-left:25px;background:url("../../images/icon_png24.png") no-repeat -54px 0;color:#0799c9;margin-top:5px;}
+.person_photo p{padding-left:25px;background:url("../images/icon_png24.png") no-repeat -54px 0;color:#0799c9;margin-top:5px;}
 .person_photo p.no_implemented{background-position:-54px -31px;color:#999;}
 .person_wish{font-size:16px;width:815px;float:right;position:relative;border:1px solid #e6fd94;border-radius:4px;background:#f2fcd0;box-shadow:0 0 10px rgba(230,253,148,0.8) inset;padding:10px 20px;line-height:32px;}
 .person_wish .text{font-size:20px;}
 .person_wish .text strong{font-weight:normal;color:#0799c9;}
-p.thank{color:#999;padding-left:50px;background:url("../../images/icon_png24.png") no-repeat -40px -67px;}
-.person_wish .icon{display:block;position:absolute;width:13px;height:21px;background:url("../../images/wish_icon.png") no-repeat;left:-13px;top:20px;z-index:2;}
+p.thank{color:#999;padding-left:50px;background:url("../images/icon_png24.png") no-repeat -40px -67px;}
+.person_wish .icon{display:block;position:absolute;width:13px;height:21px;background:url("../images/wish_icon.png") no-repeat;left:-13px;top:20px;z-index:2;}
 /*小心愿结束*/
 
 /*听大戏开始*/
 .find_friend_module.dark_blue{border-color:#06c3d6;}
 .find_friend_module.dark_blue .ffm_header h2{color:#06c3d6;}
 .lnb_btn_area{margin-top:15px;overflow:hidden;zoom:1;}
-.lnb_btn_area button{display:block;float:right;background:url("../../images/find_friend_bg.png") no-repeat 0 -66px;margin-left:28px;width:166px;height:43px;border:0 none;color:#fff;font-size:20px;}
+.lnb_btn_area button{display:block;float:right;background:url("../images/find_friend_bg.png") no-repeat 0 -66px;margin-left:28px;width:166px;height:43px;border:0 none;color:#fff;font-size:20px;}
 /*听大戏结束*/
 
 /*我帮您开始*/

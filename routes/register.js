@@ -21,7 +21,7 @@ module.exports = function(o){
         info.save(function(err){
             if(err){
                 obj.errorNumber = 0;
-                obj.message = "注册失败"
+                obj.message = "注册失败";
                 req.session.registerMessage = "注册失败";
             }else{
                 req.session.registerMessage && req.session.registerMessage.destroy();
