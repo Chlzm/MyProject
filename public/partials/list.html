@@ -1,1 +1,3 @@
-<div id="testid" date="今天1" ng-click="fn" ng-controller="PollListCtrl" class="clasname">{{polls}}<p ng-show="show" ng-click="fn(3433343434)">neirong</p></div>
+<ul>
+    <li ng-repeat="item in data" ng-click="clickItem(this)">{{item}}<span ng-transclude></span></li>
+</ul>
