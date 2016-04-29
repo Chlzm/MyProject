@@ -1,2 +1,3 @@
-let a = 1;
-console.log(a);
+const fs = require('fs');
+let result = fs.existsSync('./bu22ild.js');
+console.log(result);
