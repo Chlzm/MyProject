@@ -1,11 +1,11 @@
-let express = require("express");
-let expressJade = require('express-jade');
-let bodyParser = require('body-parser');
-let cookieParser = require('cookie-parser');
-let session = require('express-session');
-let compression = require('compression');
-let db = require("./database/db.js");
-let app = express();
+var express = require("express");
+var expressJade = require('express-jade');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var compression = require('compression');
+var db = require("./database/db.js");
+var app = express();
 app.use(compression());
 app.set("views",__dirname + "/views");
 app.set('view engine','jade');
@@ -33,7 +33,7 @@ var routes = require('./routes')({
 	db : db
 });
 if(!module.parent){ 
-    app.listen(80);
+    app.listen(3000);
     console.log('ok')
 }
 module.exports = app;
