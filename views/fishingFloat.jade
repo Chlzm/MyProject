@@ -1,0 +1,121 @@
+extend layout
+block content
+	body.container(ng-app="app" ng-controller="myControl")
+		link(type="text/css" rel="stylesheet" href="dest/stylesheets/testAngular.css")
+
+		script(type="text/javascript" src="dest/js/lib/angular.min.js")
+
+		script(type="text/javascript").
+			var app = angular.module('app',[]);
+			app.controller('myControl',function($scope,$http){
+				$scope.todos = [{
+					id : 5,
+					action: "内容1",
+					complete: false
+				}, {
+					id : 2,
+					action: "内容2",
+					complete: true
+				}, {
+					id : 3,
+					action: "内容3",
+					complete: false
+				}, {
+					id : 4,
+					action: "内容0",
+					complete: false,
+					className : 'aaa'
+				}];
+				$scope.data = {
+					mode : 1
+				};
+				$scope.ar = [{
+					a : 2,
+					b : 3.2,
+					c : 2
+				},{
+					a: 3,
+					b: 4.5,
+					c : 2
+				}, {
+					a: 2,
+					b: 6.8,
+					c : 2
+				}];
+				$scope.dataList = [];
+				$scope.userName = "";
+				$scope.search = function(){
+					$http({
+						url : '/getAngularInfo',			// 调后台接口
+						method : 'post',
+						data:{
+							name: $scope.userName
+						}
+					}).success(function(result){
+						$scope.dataList = result.data;
+					})
+				}
+				$scope.selectPage = function(){
+					alert(2);
+				}
+			});
+			app.directive('sbtn', function () {
+				return {
+					restrict: 'EA',
+					scope : {
+						type : '@value',
+						onSelectPage : '&'
+					},
+					template : '<div><botton ng-click="onSelectPage()">{{type}}</botton></div>',
+					replace : true,
+					link : function(scope){
+						scope.type = 12;
+						scope.selectPage = function(){
+							alert(scope.type);
+						}
+					},
+					compile: function (element, attrs) {
+						element.addClass('btn');
+						if (attrs.type == 'button') {
+							element.addClass('btn-primary');
+						}
+						if (attrs.size) {
+							element.addClass('btn-' + attrs.size);
+						}
+					}
+				}
+			});
+			app.directive('pagination',function(){
+				return {
+					restrict : 'EA',// A:属性 E:标签，C:样式，M：注释
+					link : function(scope,element,attrs){
+						scope.data = [1,2,3];
+						scope.clickItem = function(value){
+							console.log(value)
+						}
+						var childrens = element.children("<li>");
+						childrens.eq(2).bind("click",function(){
+							alert(1)
+						})
+					},
+					//templateUrl : './partials/list.html',
+					//replace : true,
+					//transclude : true
+				}
+			});
+		ul(pagination)
+			li 1
+			li 2
+			li 3
+		select.form-control(ng-model="aaa" ng-options="item.action group by item.id for item in todos")
+			option(value="") 请选择
+		input.form-control(type="text" ng-model="userName")
+		sbtn(type="button" value="查找" on-select-page="search()")
+		ul
+			li(ng-repeat="item in dataList")
+				p(ng-repeat="i in item.a1")
+					span 姓名：{{i.name}}
+					span 年龄：{{i.age}}
+					span 性别：{{i.sex}}
+
+
