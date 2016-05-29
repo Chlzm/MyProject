@@ -43,8 +43,14 @@ var friends = new Schema({
 var info = new Schema({
     name : String
 });
+var fishing = new Schema({
+    type : String,
+    text : String,
+    description : String
+});
 exports.user = db.model('users', userSchema);
 exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
 exports.friends = db.model('friends1', friends);
 exports.info2 = db.model('info1',info);
+exports.fishing = db.model('fishing_1',fishing);

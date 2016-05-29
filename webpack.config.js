@@ -5,7 +5,8 @@ module.exports = {
     entry: {
         index:'./public/src/js/app/index/index.js',
         register:'./public/src/js/app/register/register.js',
-        login:'./public/src/js/app/login/login.js'
+        login:'./public/src/js/app/login/login.js',
+        fishing:'./public/src/js/app/fishing/fishing.js'
     }, //演示单入口文件
     output: {
         path: path.join(__dirname, './public/dest/js/app'),   //打包输出的路径

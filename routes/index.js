@@ -39,4 +39,6 @@ module.exports = function(o){
     require('./register')(o);
     // 
     require('./testAngular')(o);
+    // 钓鱼浮漂介绍
+    require('./fishing')(o);
 }

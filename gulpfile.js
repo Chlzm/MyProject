@@ -90,9 +90,9 @@ gulp.task('scss',function(){
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);
 	gulp.watch('./public/src/stylesheets/less/*.less',['less']);
-	gulp.watch('./public/src/js/app/**/*.js',['webpackJs']);
+	gulp.watch('./public/src/js/app/fishing/*.js',['webpackJs']);
 	gulp.watch('./public/src/stylesheets/css/*.css',['css']);
 	//gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });
-gulp.task('default',['watch'])
+gulp.task('default',['watch']);
