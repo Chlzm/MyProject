@@ -3,7 +3,8 @@ var jade = require('gulp-jade');
 var less = require('gulp-less');
 var scss = require('gulp-ruby-sass-ns');
 var ngmin = require('gulp-ngmin');
-var webpack = require('gulp-webpack'); 
+var webpack = require('gulp-webpack');
+const babel = require('gulp-babel');
 var webpackConfig = require('./webpack.config');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
@@ -94,5 +95,18 @@ gulp.task('watch', function(){
 	gulp.watch('./public/src/stylesheets/css/*.css',['css']);
 	//gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
+});
+gulp.task('react',function(){
+    gulp.src('public/src/js/app/**/*.js')
+    .pipe(babel({
+        "presets": ["react","es2015-loose","stage-0","stage-1","stage-3"],
+      /*  "plugins": [
+            "syntax-export-extensions",
+            "babel-plugin-add-module-exports",
+            "transform-es2015-modules-amd",
+        ],*/
+        "compact": false,
+    }))
+    .pipe(gulp.dest('public/dest/js/app'))
 });
 gulp.task('default',['watch']);

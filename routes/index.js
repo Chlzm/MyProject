@@ -33,6 +33,10 @@ module.exports = function(o){
     o.app.get('/testAngular',function(req,res){
         res.render('testAngular',{title:'angular 测试'})
     });
+    // 找朋友信息推荐
+    o.app.get('/react',function(req,res){
+        res.render('react',{title:'学习react'})
+    });
     // 登录页路由
     require('./login')(o);
     // 注册页路曲
