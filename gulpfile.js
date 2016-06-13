@@ -97,16 +97,14 @@ gulp.task('watch', function(){
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });
 gulp.task('react',function(){
-    gulp.src('public/src/js/app/**/*.js')
+    gulp.src('public/src/js/app/react/react.js')
     .pipe(babel({
         "presets": ["react","es2015-loose","stage-0","stage-1","stage-3"],
-      /*  "plugins": [
-            "syntax-export-extensions",
-            "babel-plugin-add-module-exports",
-            "transform-es2015-modules-amd",
-        ],*/
-        "compact": false,
+        "compact": false
     }))
-    .pipe(gulp.dest('public/dest/js/app'))
+    .pipe(gulp.dest('public/dest/js/app/react'))
+});
+gulp.task('watchReact',function(){
+    gulp.watch('./public/src/js/app/react/react.js',['react']);
 });
 gulp.task('default',['watch']);

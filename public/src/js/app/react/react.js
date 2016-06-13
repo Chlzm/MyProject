@@ -1,16 +1,21 @@
-let HelloWorld = React.createClass({
-    render: function() {
-        return (
-        <div>
-        Hello1, <input type="text" placeholder="Your name here" />!
-                It is {this.props.date.toTimeString()}
-        </div>
-        );
+import React from '../../lib/react';
+import ReactDOM from '../../lib/react-dom';
+class HellWord1 extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            name : '1112'
+        }
     }
-});
+    render(){
+        return (
+            <div style={{color:'yellow'}}>{this.state.name}{this.props.date.getTime()}</div>
+        )
+    }
+}
 setInterval(function() {
     ReactDOM.render(
-    <HelloWorld date={new Date()} />,
+    <HellWord1 date={new Date()} test="111"/>,
         document.getElementById('example')
     );
-}, 500);
+}, 1000);
