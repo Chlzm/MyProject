@@ -1,21 +1,67 @@
-import React from '../../lib/react';
-import ReactDOM from '../../lib/react-dom';
-class HellWord1 extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            name : '1112'
+import React from 'react';
+import ReactDOM from 'reactDom';
+import $ from 'jquery';
+let Test = React.createClass({
+    propTypes : {
+        title : React.PropTypes.string.isRequired
+    },
+    getInitialState(){
+        return {
+            show : false
         }
+    },
+    handlerClick(){
+        var show = !this.state.show;
+        this.setState({
+            show : show
+        });
+        this.refs.myTextInput.focus();
+    },
+    render(){
+        return(
+            <div onClick={this.handlerClick}>
+                <ol>
+                    {
+                        React.Children.map(this.props.children,(children)=>{
+                            return <li>{children}{this.props.title}</li>
+                        })
+                    }
+                </ol>
+                <input type="text" ref="myTextInput"/>
+            </div>
+        );
     }
+});
+let ChangeInput = React.createClass({
+    getInitialState(){
+        return {
+            value : 'hello!!'
+        }
+    },
+    handlerChange(event){
+        this.setState({
+            value : event.target.value
+        })
+    },
     render(){
         return (
-            <div style={{color:'yellow'}}>{this.state.name}{this.props.date.getTime()}</div>
+            <div>
+                <Test title="你好">
+                    <span>1</span>
+                    <span>2</span>
+                </Test>
+                <input type="text" value={this.state.value} onChange={this.handlerChange}/>
+                <p>{this.state.value}</p>
+            </div>
         )
     }
-}
-setInterval(function() {
-    ReactDOM.render(
-    <HellWord1 date={new Date()} test="111"/>,
-        document.getElementById('example')
-    );
-}, 1000);
+});
+ReactDOM.render(
+    <ChangeInput/>,
+    document.getElementById('example')
+);
+export class Point {
+    say (){
+        console.log(Object.is(null,null));
+    }
+};;

@@ -1,9 +1,14 @@
-define(['../../lib/react', '../../lib/react-dom'], function (_react, _reactDom) {
-    'use strict';
+define(['exports', 'react', 'reactDom', 'jquery'], function (exports, _react, _reactDom, _jquery) {
+    
+
+    exports.__esModule = true;
+    exports.Point = undefined;
 
     var _react2 = _interopRequireDefault(_react);
 
     var _reactDom2 = _interopRequireDefault(_reactDom);
+
+    var _jquery2 = _interopRequireDefault(_jquery);
 
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
@@ -17,57 +22,98 @@ define(['../../lib/react', '../../lib/react-dom'], function (_react, _reactDom) 
         }
     }
 
-    function _possibleConstructorReturn(self, call) {
-        if (!self) {
-            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-        }
+    var Test = _react2.default.createClass({
+        displayName: 'Test',
 
-        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-    }
-
-    function _inherits(subClass, superClass) {
-        if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-        }
-
-        subClass.prototype = Object.create(superClass && superClass.prototype, {
-            constructor: {
-                value: subClass,
-                enumerable: false,
-                writable: true,
-                configurable: true
-            }
-        });
-        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-    }
-
-    var HellWord1 = function (_React$Component) {
-        _inherits(HellWord1, _React$Component);
-
-        function HellWord1() {
-            _classCallCheck(this, HellWord1);
-
-            var _this = _possibleConstructorReturn(this, _React$Component.call(this));
-
-            _this.state = {
-                name: '1112'
+        propTypes: {
+            title: _react2.default.PropTypes.string.isRequired
+        },
+        getInitialState: function getInitialState() {
+            return {
+                show: false
             };
-            return _this;
-        }
+        },
+        handlerClick: function handlerClick() {
+            var show = !this.state.show;
+            this.setState({
+                show: show
+            });
+            this.refs.myTextInput.focus();
+        },
+        render: function render() {
+            var _this = this;
 
-        HellWord1.prototype.render = function render() {
             return _react2.default.createElement(
                 'div',
-                { style: { color: 'yellow' } },
-                this.state.name,
-                this.props.date.getTime()
+                { onClick: this.handlerClick },
+                _react2.default.createElement(
+                    'ol',
+                    null,
+                    _react2.default.Children.map(this.props.children, function (children) {
+                        return _react2.default.createElement(
+                            'li',
+                            null,
+                            children,
+                            _this.props.title
+                        );
+                    })
+                ),
+                _react2.default.createElement('input', { type: 'text', ref: 'myTextInput' })
             );
+        }
+    });
+    var ChangeInput = _react2.default.createClass({
+        displayName: 'ChangeInput',
+        getInitialState: function getInitialState() {
+            return {
+                value: 'hello!!'
+            };
+        },
+        handlerChange: function handlerChange(event) {
+            this.setState({
+                value: event.target.value
+            });
+        },
+        render: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    Test,
+                    { title: '你好' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        '1'
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        '2'
+                    )
+                ),
+                _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handlerChange }),
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    this.state.value
+                )
+            );
+        }
+    });
+    _reactDom2.default.render(_react2.default.createElement(ChangeInput, null), document.getElementById('example'));
+
+    var Point = exports.Point = function () {
+        function Point() {
+            _classCallCheck(this, Point);
+        }
+
+        Point.prototype.say = function say() {
+            console.log(Object.is(null, null));
         };
 
-        return HellWord1;
-    }(_react2.default.Component);
+        return Point;
+    }();
 
-    setInterval(function () {
-        _reactDom2.default.render(_react2.default.createElement(HellWord1, { date: new Date(), test: '111' }), document.getElementById('example'));
-    }, 1000);
+    ;;
 });

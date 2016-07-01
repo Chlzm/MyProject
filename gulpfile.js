@@ -5,6 +5,7 @@ var scss = require('gulp-ruby-sass-ns');
 var ngmin = require('gulp-ngmin');
 var webpack = require('gulp-webpack');
 const babel = require('gulp-babel');
+var replace = require('gulp-replace');
 var webpackConfig = require('./webpack.config');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
@@ -102,6 +103,7 @@ gulp.task('react',function(){
         "presets": ["react","es2015-loose","stage-0","stage-1","stage-3"],
         "compact": false
     }))
+    .pipe(replace(/'use strict';/g, ''))
     .pipe(gulp.dest('public/dest/js/app/react'))
 });
 gulp.task('watchReact',function(){
