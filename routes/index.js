@@ -33,9 +33,13 @@ module.exports = function(o){
     o.app.get('/testAngular',function(req,res){
         res.render('testAngular',{title:'angular 测试'})
     });
-    // 找朋友信息推荐
+    // react页面
     o.app.get('/react',function(req,res){
         res.render('react',{title:'学习react'})
+    });
+    //
+    o.app.get('/flex',function(req,res){
+       res.render('flex',{title:'练习flex'})
     });
     // 登录页路由
     require('./login')(o);

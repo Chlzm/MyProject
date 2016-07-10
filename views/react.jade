@@ -1,7 +1,6 @@
 extend layout
 block content
 	body.container
-		//script(type="text/javascript" src="dest/js/app/react/react.js")
 		div#example
 		script(type="text/javascript" src="src/js/lib/require.js")
 		script(type="text/javascript").
@@ -18,8 +17,5 @@ block content
 				}
 			});
 		script(type="text/javascript").
-			requirejs(["appReact"],function(obj){
-				var point = new obj.Point();
-				point.say();
-			});
+			requirejs(["appReact"]);
 

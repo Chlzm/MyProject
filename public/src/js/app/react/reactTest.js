@@ -4,7 +4,7 @@ import $ from 'jquery';
 let Father = React.createClass({
     getDefaultProps (){
         return {
-            items : ["华为","苹果","三星"]
+            items : ["华为","苹果","三星2"]
         }
     },
     getInitialState (){

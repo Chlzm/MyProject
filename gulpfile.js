@@ -1,12 +1,13 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var less = require('gulp-less');
-var scss = require('gulp-ruby-sass-ns');
+var sass = require('gulp-ruby-sass-ns');
 var ngmin = require('gulp-ngmin');
 var webpack = require('gulp-webpack');
 const babel = require('gulp-babel');
 var replace = require('gulp-replace');
 var webpackConfig = require('./webpack.config');
+var minify = require('gulp-minify');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
     imagemin = require('gulp-imagemin'),//图片压缩
@@ -76,7 +77,7 @@ gulp.task('libjs',function(){
     return gulp.src('public/src/js/lib/**.js')
         .pipe(uglify())
         .pipe(gulp.dest('public/dest/js/lib'))
-})
+});
 // 编译less
 gulp.task('less',function(){
 	gulp.src('public/src/stylesheets/less/*.less')
@@ -84,29 +85,40 @@ gulp.task('less',function(){
 	.pipe(gulp.dest('public/dest/stylesheets'))
 });
 //编译sass
-gulp.task('scss',function(){
+gulp.task('sass',function(){
 	gulp.src('public/src/stylesheets/sass/*.sass')
-	.pipe(scss({style:'compact'}))
+	.pipe(sass())
 	.pipe(gulp.dest('public/dest/stylesheets'))
 });
 gulp.task('watch', function(){
     //gulp.watch('./public/partials/*.jade',['jade']);
 	gulp.watch('./public/src/stylesheets/less/*.less',['less']);
+    gulp.watch('./public/src/stylesheets/sass/*.sass',['sass']);
 	gulp.watch('./public/src/js/app/fishing/*.js',['webpackJs']);
 	gulp.watch('./public/src/stylesheets/css/*.css',['css']);
 	//gulp.watch('./public/stylesheets/**/*.sass',['sass']);
 	//gulp.watch('./public/stylesheets/*.scss',['scss']);
 });
 gulp.task('react',function(){
-    gulp.src('public/src/js/app/react/react.js')
+    gulp.src('public/src/js/app/**/*.js')
     .pipe(babel({
         "presets": ["react","es2015-loose","stage-0","stage-1","stage-3"],
         "compact": false
     }))
     .pipe(replace(/'use strict';/g, ''))
-    .pipe(gulp.dest('public/dest/js/app/react'))
+    .pipe(minify({
+        ext : {
+            src : '.debug.js',
+            min : '.min.js'
+        }
+    }))
+    .pipe(gulp.dest('public/dest/js/app'))
 });
 gulp.task('watchReact',function(){
-    gulp.watch('./public/src/js/app/react/react.js',['react']);
+    var watcher = gulp.watch('public/src/js/app/**/*.js',['react']);
+    watcher.on('change',function(event){
+        console.log(event)
+    });
 });
-gulp.task('default',['watch']);
+
+gulp.task('default',['watchReact']);
