@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'reactDom';
 import $ from 'jquery';
+let exampleMixin = {
+    componentWillMount(){
+        console.log("will");
+    },
+    componentDidMount(){
+        console.log("did1");
+    }
+};
 let Father = React.createClass({
+    mixins : [exampleMixin],
     getDefaultProps (){
         return {
-            items : ["华为","苹果","三星"]
+            items : ["华为","苹果","三星3"]
         }
     },
     getInitialState (){
@@ -43,7 +52,7 @@ let Son = React.createClass({
                     {
                         this.props.items.map(function(item,i){
                             return (
-                                <li data-key={i}>{item}</li>
+                                <li data-key={i} id={}>{item}</li>
                             )
                         })
                     }

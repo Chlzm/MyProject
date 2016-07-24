@@ -13,11 +13,21 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
         };
     }
 
+    var exampleMixin = {
+        componentWillMount: function componentWillMount() {
+            console.log("will");
+        },
+        componentDidMount: function componentDidMount() {
+            console.log("did1");
+        }
+    };
     var Father = _react2.default.createClass({
         displayName: 'Father',
+
+        mixins: [exampleMixin],
         getDefaultProps: function getDefaultProps() {
             return {
-                items: ["华为", "苹果", "三星"]
+                items: ["华为", "苹果", "三星3"]
             };
         },
         getInitialState: function getInitialState() {
@@ -65,7 +75,7 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
                     this.props.items.map(function (item, i) {
                         return _react2.default.createElement(
                             'li',
-                            { 'data-key': i },
+                            { 'data-key': i, id: i },
                             item
                         );
                     })
