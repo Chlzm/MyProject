@@ -2,67 +2,69 @@ import React from 'react';
 import ReactDOM from 'reactDom';
 import $ from 'jquery';
 let exampleMixin = {
-    componentWillMount(){
+    componentWillMount() {
         console.log("will");
     },
-    componentDidMount(){
-        console.log("did1");
-    }
+    componentDidMount() {
+        console.log("did");
+    },
 };
 let Father = React.createClass({
-    mixins : [exampleMixin],
-    getDefaultProps (){
+    mixins: [exampleMixin],
+    getDefaultProps() {
         return {
-            items : ["华为","苹果","三星3"]
+            items: ["华为", "苹果", "三星"],
         }
     },
-    getInitialState (){
+    getInitialState() {
         return {
-            address: '安徽'
+            address: '安徽',
         }
     },
-    changeState(value){
+    changeState(value) {
         this.setState({
-            address : value
+            address: value,
         });
     },
-    render (){
+    render() {
         return (
             <div>
-                <h1>我是父集:{this.state.address}</h1>
-                <Son change={this.changeState} items={this.props.items}/>
+                <h1>我是父集:{this.state.address }</h1>
+                <Son change={this.changeState} items={this.props.items} />
             </div>
         )
-    }
+    },
 });
 let Son = React.createClass({
-    getInitialState(){
+    getInitialState() {
         return {
-            address : '北京',
-            height : $(window).height()
+            address: '北京',
+            height: $(window).height(),
         }
     },
-    changeAddress(){
+    changeAddress() {
         this.props.change(this.state.address);
     },
-    render(){
+    render() {
         return (
             <div>
                 <ul>
                     {
-                        this.props.items.map(function(item,i){
+                        this.props.items.map(function aa(item, i) {
                             return (
-                                <li data-key={i} id={}>{item}</li>
+                                <li data-key={i}>{item}</li>
                             )
                         })
                     }
                 </ul>
-                <span onClick={this.changeAddress}>我是子集1：{this.state.address}-{this.state.height}</span>
+                <span onClick={this.changeAddress}>
+                    我是子集2：{this.state.address}-{this.state.height}
+                </span>
             </div>
         )
-    }
+    },
 });
 ReactDOM.render(
-    <Father/>,
+    <Father />,
     document.getElementById('example')
 );

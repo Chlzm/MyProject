@@ -18,7 +18,7 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
             console.log("will");
         },
         componentDidMount: function componentDidMount() {
-            console.log("did1");
+            console.log("did");
         }
     };
     var Father = _react2.default.createClass({
@@ -27,7 +27,7 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
         mixins: [exampleMixin],
         getDefaultProps: function getDefaultProps() {
             return {
-                items: ["华为", "苹果", "三星3"]
+                items: ["华为", "苹果", "三星"]
             };
         },
         getInitialState: function getInitialState() {
@@ -72,10 +72,10 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
                 _react2.default.createElement(
                     'ul',
                     null,
-                    this.props.items.map(function (item, i) {
+                    this.props.items.map(function aa(item, i) {
                         return _react2.default.createElement(
                             'li',
-                            { 'data-key': i, id: i },
+                            { 'data-key': i },
                             item
                         );
                     })
@@ -83,7 +83,7 @@ define(['react', 'reactDom', 'jquery'], function (_react, _reactDom, _jquery) {
                 _react2.default.createElement(
                     'span',
                     { onClick: this.changeAddress },
-                    '我是子集1：',
+                    '我是子集2：',
                     this.state.address,
                     '-',
                     this.state.height

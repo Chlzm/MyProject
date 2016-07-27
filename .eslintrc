@@ -1,0 +1,47 @@
+{
+
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "generators": false,
+            "objectLiteralDuplicateProperties": false,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "extends": "airbnb",
+    "rules": {
+        "no-fallthrough": 0,
+        "quotes": 0,
+        "no-console": 0,
+        "no-debugger": 0,
+        "semi": 0,
+        "no-trailing-spaces": 0,
+        "eol-last": 0,
+        "no-unused-vars": 0,
+        "no-underscore-dangle": 0,
+        "no-alert": 0,
+        "no-lone-blocks": 0,
+        "prefer-const": 0,
+        "indent": 0,
+        "arrow-body-style": 0,
+        "no-script-url": 0,
+        "react/jsx-closing-bracket-location": 0,
+        "react/jsx-curly-spacing": 0,
+        "react/jsx-indent-props": 0,
+        "react/jsx-key": 0,
+        "react/jsx-max-props-per-line": 0,
+        "react/jsx-no-bind": 0,
+        "react/jsx-no-literals": 0,
+        "react/jsx-sort-prop-types": 0,
+        "react/jsx-sort-props": 0,
+        "react/no-multi-comp": 0,
+        "react/no-set-state": 0,
+        "react/prefer-es6-class": 0,
+        "react/prop-types": 0
+    },
+    "globals": {
+        "__webpack_public_path__": 0
+    }
+}
