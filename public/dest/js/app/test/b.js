@@ -1,1 +1,22 @@
-webpackJsonp([1],{2:function(e,o,t){var n,u;n=[e,o],u=function(e,o){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o["default"]=function(){console.log("b")},e.exports=o["default"]}.apply(o,n),!(void 0!==u&&(e.exports=u))}});
+webpackJsonp([1],{
+
+/***/ 2:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (module, exports) {
+	    'use strict';
+
+	    Object.defineProperty(exports, "__esModule", {
+	        value: true
+	    });
+
+	    exports.default = function () {
+	        console.log('b');
+	    };
+
+	    module.exports = exports['default'];
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});
