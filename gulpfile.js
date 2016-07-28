@@ -120,5 +120,12 @@ gulp.task('watchReact',function(){
         console.log(event)
     });
 });
-
+gulp.task(process.argv[2],function(){
+    //webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/main.js';
+    gulp.src('public/src/js/app/**/*.js')
+    .pipe(replace(/'use strict'/, ''))
+    .pipe(webpack(webpackConfig))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/dest/js/app'))
+})
 gulp.task('default',['watchReact']);

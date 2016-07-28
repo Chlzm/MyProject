@@ -41,6 +41,9 @@ module.exports = function(o){
     o.app.get('/flex',function(req,res){
        res.render('flex',{title:'练习flex'})
     });
+    o.app.get('/es6',function(req,res){
+       res.render('es6',{title:'es6-webpack'})
+    });
     // 登录页路由
     require('./login')(o);
     // 注册页路曲
