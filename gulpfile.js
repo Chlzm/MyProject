@@ -37,13 +37,13 @@ gulp.task('html', function() {
 });
 // 压缩图片
 gulp.task('image', function() {
-    return gulp.src('public/src/images/*.jpg')
+    return gulp.src('./public/src/images/*')
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngcrush()]
         }))
-        .pipe(gulp.dest('public/dest/images'));
+        .pipe(gulp.dest('./public/dest/images'));
         //.pipe(notify({ message: 'img task ok' }));
 });
 // 合并、压缩、重命名css
@@ -120,12 +120,12 @@ gulp.task('watchReact',function(){
         console.log(event)
     });
 });
-gulp.task(process.argv[2],function(){
+/*gulp.task(process.argv[2],function(){
     webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/main.js';
-    gulp.src('public/src/js/app/**/*.js')
+    gulp.src('public/src/js/app/!**!/!*.js')
     .pipe(replace(/'use strict'/, ''))
     .pipe(webpack(webpackConfig))
     //.pipe(uglify())
     .pipe(gulp.dest('public/dest/js/app'))
-})
+});*/
 gulp.task('default',['watchReact']);
