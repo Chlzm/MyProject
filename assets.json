@@ -1,0 +1,11 @@
+{
+  "hash": "0014673326f04399984c",
+  "publicPath": "/dest/js/app/",
+  "assets": {
+    "test": {
+      "js": [
+        "/dest/js/app/test/test.min.js"
+      ]
+    }
+  }
+}
