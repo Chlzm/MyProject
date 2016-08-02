@@ -1,5 +1,0 @@
-@charset "UTF-8";
-/*针对轮播区域个数的样式处理开始*/
-.banner_num li{background:#999;}
-.banner_num li.select{background:#f80;color:#fff;}
-/*针对轮播区域个数的样式处理结束*/

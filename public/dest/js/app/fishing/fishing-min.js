@@ -1,1 +1,0 @@
-define([],function(){!function(){var t=angular.module("myFishing",[]);t.controller("float",function(t,n){t.type="";var o=function(){n({url:"/fishing/getFloat",method:"post",data:{type:t.type}}).success(function(n){t.data=n.data})};o(),t.getFloatInfo=function(){o()}})}()});
