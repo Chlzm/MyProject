@@ -1,10 +1,15 @@
 import {say,jump} from './a';
-setTimeout(()=>{
-    var load = require("bundle?lazy&name=my-chunk!./b.js");
-    // The chunk is not requested until you call the load function 
-    load((file)=>{
-        file();
-    });
+import requireB from "bundle?lazy&name=b!./b"
+import requireC from "bundle?lazy&name=c!./c"
 
-},2000);
+
+setTimeout(()=>{
+	requireB(module => {
+	    (module.default || module)()
+	})
+},1000);
+
+ requireC(module => {
+     (module.default || module)()
+ })
 console.log(say);

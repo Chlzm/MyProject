@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
 /***/ 2:
 /***/ function(module, exports, __webpack_require__) {
@@ -11,7 +11,7 @@ webpackJsonp([2],{
 	    });
 
 	    exports.default = function () {
-	        console.log('b');
+	        console.log('c');
 	    };
 
 	    module.exports = exports['default'];

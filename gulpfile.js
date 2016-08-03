@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 var replace = require('gulp-replace');
 var webpackConfig = require('./webpack.config');
 var minify = require('gulp-minify');
+var livereload = require('gulp-livereload');
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
     imagemin = require('gulp-imagemin'),//图片压缩
@@ -46,16 +47,7 @@ gulp.task('image', function() {
         .pipe(gulp.dest('./public/dest/images'));
         //.pipe(notify({ message: 'img task ok' }));
 });
-// 合并、压缩、重命名css
-gulp.task('css', function() {
-    return gulp.src('public/src/stylesheets/css/*.css')
-        .pipe(concat('all.css'))
-        .pipe(gulp.dest('public/dest/stylesheets'))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(minifycss())
-        .pipe(gulp.dest('public/dest/stylesheets'))
-        //.pipe(notify({ message: 'css task ok' }));
-});
+
 // 合并、压缩js文件
 gulp.task('js', function() {
     return gulp.src('public/src/js/app/**/*.js')
@@ -78,12 +70,7 @@ gulp.task('libjs',function(){
         .pipe(uglify())
         .pipe(gulp.dest('public/dest/js/lib'))
 });
-// 编译less
-gulp.task('less',function(){
-	gulp.src('public/src/stylesheets/less/*.less')
-	.pipe(less())
-	.pipe(gulp.dest('public/dest/stylesheets'))
-});
+
 //编译sass
 gulp.task('sass',function(){
 	gulp.src('public/src/stylesheets/sass/*.sass')
@@ -128,4 +115,29 @@ gulp.task('watchReact',function(){
     //.pipe(uglify())
     .pipe(gulp.dest('public/dest/js/app'))
 });*/
-gulp.task('default',['watchReact']);
+// 合并、压缩、重命名css
+gulp.task('css', function() {
+    return gulp.src('public/src/stylesheets/css/*.css')
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('public/dest/stylesheets'))
+        .pipe(rename({ suffix: '.min' }))
+        //.pipe(minifycss())
+        .pipe(gulp.dest('public/dest/stylesheets'))
+        .pipe(livereload())
+        //.pipe(notify({ message: 'css task ok' }));
+});
+gulp.task('watchcss',function(){
+    var server = livereload();
+    livereload.listen();
+    var watcher = gulp.watch('public/src/stylesheets/css/*.css',['css'],function(file){
+        server.changed(file.path);
+    });
+})
+// 编译less
+gulp.task('less',function(){
+    gulp.src('public/src/stylesheets/less/*.less')
+    .pipe(less())
+    .pipe(gulp.dest('public/dest/stylesheets'))
+    .pipe(livereload())
+});
+gulp.task('default',['watchcss']);

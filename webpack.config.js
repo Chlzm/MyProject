@@ -7,13 +7,13 @@ module.exports = {
         register:'./public/src/js/app/register/register.js',
         login:'./public/src/js/app/login/login.js',
         fishing:'./public/src/js/app/fishing/fishing.js'*/
-        //test:'./public/src/js/app/test/main.js'
+        test:'./public/src/js/app/test/main'
     }, //演示单入口文件
     output: {
         path: path.join(__dirname, './public/dest/js/app'),   //打包输出的路径
         filename: '[name]/[name].min.js',                              //打包后的名字
         publicPath: "/dest/js/app/",                     //html引用路径，在这里是本地地址。
-        chunkFilename : 'test/b.js'
+        chunkFilename : 'test/[chunkhash].js'
     },
     module: {
         loaders: [
@@ -24,13 +24,13 @@ module.exports = {
                 discardComments: {removeAll: true}
             },*/
             {
-                test: /\.js(-lazy)?$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 //loader: 'ng-annotate!babel-loader',
                 loader : 'babel-loader',
                 discardComments: {removeAll: true}
             }
-        ]
+        ],
     },
     resolve:{
         extensions:['','.js','.json']

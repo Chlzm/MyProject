@@ -1,6 +1,6 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
-/***/ 2:
+/***/ 3:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (module, exports) {
@@ -11,7 +11,7 @@ webpackJsonp([2],{
 	    });
 
 	    exports.default = function () {
-	        console.log('b');
+	        console.log('c');
 	    };
 
 	    module.exports = exports['default'];
