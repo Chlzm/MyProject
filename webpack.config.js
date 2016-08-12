@@ -3,11 +3,12 @@ var webpack = require('webpack');
 var banner = 'lastmodify: ' + new Date().toLocaleString();
 module.exports = {
     entry: {
-        /*index:'./public/src/js/app/index/index.js',
+       index:'./public/src/js/app/index/index.js',
+        /*
         register:'./public/src/js/app/register/register.js',
         login:'./public/src/js/app/login/login.js',
         fishing:'./public/src/js/app/fishing/fishing.js'*/
-        test:'./public/src/js/app/test/main'
+        //test:'./public/src/js/app/test/main'
     }, //演示单入口文件
     output: {
         path: path.join(__dirname, './public/dest/js/app'),   //打包输出的路径
@@ -17,19 +18,19 @@ module.exports = {
     },
     module: {
         loaders: [
-            /*{
+            {
                 test: /\.js?$/,
                 loader: 'ng-annotate!babel',
                 exclude: /node_modules/,
                 discardComments: {removeAll: true}
-            },*/
-            {
+            },
+            /*{
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 //loader: 'ng-annotate!babel-loader',
                 loader : 'babel-loader',
                 discardComments: {removeAll: true}
-            }
+            }*/
         ],
     },
     resolve:{
