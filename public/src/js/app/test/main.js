@@ -1,10 +1,13 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import {say,jump} from './a';
-import requireB from "bundle?lazy&name=b!./b"
-import requireC from "bundle?lazy&name=c!./c"
-
+import requireB from "./b-lazy"
+import requireC from "./c-lazy"
 
 setTimeout(()=>{
 	requireB(module => {
+		console.log($("body").height());
 	    (module.default || module)()
 	})
 },1000);
