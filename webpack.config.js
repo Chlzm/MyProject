@@ -8,7 +8,8 @@ module.exports = {
         register:'./public/src/js/app/register/register.js',
         login:'./public/src/js/app/login/login.js',
         fishing:'./public/src/js/app/fishing/fishing.js'*/
-        test:'./public/src/js/app/test/main'
+        test:'./public/src/js/app/test/main',
+        rj : './public/src/js/app/requirejs/index'
     }, //演示单入口文件
     output: {
         path: path.join(__dirname, './public/dest/js/app'),   //打包输出的路径
@@ -33,17 +34,22 @@ module.exports = {
             }
         ],
         postLoaders : [{
-            test: /\.(js|jsx)(-lazy)?$/,
-            // babel-rumtime 也有 a.default 形式的代码，不能排除
-            //exclude: /node_modules/,
-            loaders: ['es3ify-loader']
-        }, 
-        // 这个配置放到打包到生产环境中去，测试环境打到一个包
-        {
-            test: /-lazy\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loader: 'bundle-loader?lazy&name=[name]!es3ify-loader'
-        }
+                test: /\.(js|jsx)(-lazy)?$/,
+                // babel-rumtime 也有 a.default 形式的代码，不能排除
+                //exclude: /node_modules/,
+                loaders: ['es3ify-loader']
+            }, 
+            // 这个配置放到打包到生产环境中去，测试环境打到一个包
+            {
+                test: /-lazy\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'bundle-loader?lazy&name=[name]!es3ify-loader'
+            },
+            {
+                test: /jweixin-1\.0\.0\.js$/,
+                exclude: /node_modules/,
+                loader: 'bundle-loader?lazy&name=[name]!es3ify-loader'
+            }
         ]
     },
     resolve:{
@@ -52,7 +58,7 @@ module.exports = {
         alias: {
             'react': path.join(__dirname, 'public/src/js/lib/react'),
             'react-dom': path.join(__dirname, 'public/src/js/lib/react-dom'),
-            'jquery' : path.join(__dirname,'public/src/js/lib/jquery-1.12.3.min')
+            'jquery' : path.join(__dirname,'public/src/js/lib/jquery-1.12.3.min'),
         }
     },
     plugins: [

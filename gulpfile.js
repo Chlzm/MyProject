@@ -50,14 +50,14 @@ gulp.task('image', function() {
 
 // 合并、压缩js文件
 gulp.task('js', function() {
-    return gulp.src('public/src/js/app/**/*.js')
+    return gulp.src('public/src/js/app/rj/*.js')
         /*.pipe(concat('all.js'))
         .pipe(gulp.dest('dest/js'))
         .pipe(rename({ suffix: '.min' }))*/
         .pipe(ngmin({dynamic:false}))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('public/dest/js/app'))
+        .pipe(gulp.dest('public/dest/js/app/rj'))
         //.pipe(notify({ message: 'js task ok' }));
 });
 gulp.task('webpackJs',function(){
@@ -108,6 +108,7 @@ gulp.task('watchReact',function(){
     });
 });
 gulp.task(process.argv[2],function(){
+    webpackConfig.entry = {};
     webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/main.js';
     gulp.src('public/src/js/app/!**!/!*.js')
     .pipe(replace(/'use strict'/, ''))
