@@ -18,7 +18,7 @@ module.exports = function(o){
         });
     });
     o.app.post('/getXiaoBao',function(req,res){
-        o.db.xiaobao.find({},function(err,doc){
+        o.db.xiaobao.find({},'-_id',function(err,doc){
             res.json({result:doc});
         });
 
