@@ -14,7 +14,7 @@ module.exports = function(o){
         var query = o.db.knowledge.find({}).limit(4);
         query.exec(function(error,data){
             //data.page = req.body.page;
-            res.json({result:data})
+            res.json({data:data,status:1});
         });
     });
     o.app.post('/getXiaoBao',function(req,res){
