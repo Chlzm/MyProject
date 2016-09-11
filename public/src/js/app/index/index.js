@@ -9,6 +9,19 @@
                 this.getKnowledge();
                 this.getOpera();
                 this.getFriends();
+                this.getXiaobao();
+            },
+            getXiaobao(){
+                $.ajax({
+                    url : '/getXiaoBao',
+                    type : 'POST',
+                    data : {
+
+                    },
+                    success(result){
+                        console.log(result);
+                    }
+                })
             },
             // 热门知识推荐
             getKnowledge(){

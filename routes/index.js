@@ -17,6 +17,12 @@ module.exports = function(o){
             res.json({result:data})
         });
     });
+    o.app.post('/getXiaoBao',function(req,res){
+        o.db.xiaobao.find({},function(err,doc){
+            res.json({result:doc});
+        });
+
+    });
     // 热门戏曲接口
     o.app.post('/getOpera',function(req,res){
         o.db.opera.find({},function(err,doc){
