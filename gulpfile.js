@@ -107,6 +107,8 @@ gulp.task('watchReact',function(){
         console.log(event)
     });
 });
+/*
+http://feedback.livereload.com/knowledgebase/articles/67441-how-do-i-start-using-livereload
 gulp.task(process.argv[2],function(){
     webpackConfig.entry = {};
     webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/react.js';
@@ -116,6 +118,7 @@ gulp.task(process.argv[2],function(){
     //.pipe(uglify())
     .pipe(gulp.dest('public/dest/js/app'))
 });
+*/
 // 合并、压缩、重命名css
 gulp.task('css', function() {
     return gulp.src('public/src/stylesheets/css/*.css')
