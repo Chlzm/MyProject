@@ -18,7 +18,8 @@ module.exports = function(o){
         });
     });
     o.app.post('/getXiaoBao',function(req,res){
-        o.db.xiaobao.find({},'-_id',function(err,doc){
+        var name = req.body.name;
+        o.db.xiaobao.find({name:name},'-_id',function(err,doc){
             res.json({result:doc});
         });
 
@@ -41,7 +42,7 @@ module.exports = function(o){
     });
     // react页面
     o.app.get('/react',function(req,res){
-        res.render('react',{title:'学习react'})
+        res.render('react',{title:'react'})
     });
     //
     o.app.get('/flex',function(req,res){

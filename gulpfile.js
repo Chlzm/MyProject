@@ -109,7 +109,7 @@ gulp.task('watchReact',function(){
 });
 gulp.task(process.argv[2],function(){
     webpackConfig.entry = {};
-    webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/main.js';
+    webpackConfig.entry[process.argv[2]] = './public/src/js/app/'+process.argv[2]+'/react.js';
     gulp.src('public/src/js/app/!**!/!*.js')
     .pipe(replace(/'use strict'/, ''))
     .pipe(webpack(webpackConfig))

@@ -16,7 +16,7 @@
                     url : '/getXiaoBao',
                     type : 'POST',
                     data : {
-
+                        name : '丁'
                     },
                     success(result){
                         console.log(result);

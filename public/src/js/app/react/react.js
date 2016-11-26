@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'reactDom';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
 let exampleMixin = {
     componentWillMount(){
@@ -18,7 +18,7 @@ let Father = React.createClass({
     },
     getInitialState (){
         return {
-            address: '安徽'
+            address: '测试'
         }
     },
     changeState(value){
@@ -29,7 +29,7 @@ let Father = React.createClass({
     render (){
         return (
             <div>
-                <h1>我是父集:{this.state.address}</h1>
+                <h1>.:{this.state.address}</h1>
                 <Son change={this.changeState} items={this.props.items}/>
             </div>
         )
@@ -52,7 +52,7 @@ let Son = React.createClass({
                     {
                         this.props.items.map(function(item,i){
                             return (
-                                <li data-key={i} id={}>{item}</li>
+                                <li data-key={i}>{item}</li>
                             )
                         })
                     }

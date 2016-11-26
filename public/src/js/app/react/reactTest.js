@@ -9,7 +9,7 @@ let Father = React.createClass({
     },
     getInitialState (){
         return {
-            address: '安徽'
+            address: '111'
         }
     },
     changeState(value){
