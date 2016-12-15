@@ -9,7 +9,7 @@
  .exec(callback);
 * */
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/data');
+var db = mongoose.connect('mongodb://192.168.1.150/data');
 var Schema = mongoose.Schema;
 // 用户信息
 var userSchema = new Schema({
@@ -57,7 +57,7 @@ var xiaobao = new Schema({
 exports.user = db.model('users', userSchema);
 exports.knowledge = db.model('knowledge1', knowledge);
 exports.opera = db.model('opera_1', opera);
-exports.friends = db.model('friends1', friends);
+exports.friends = db.model('friends', friends);
 exports.info2 = db.model('info1',info);
 exports.fishing = db.model('fishing_1',fishing);
 exports.xiaobao = db.model('xiaobao1',xiaobao);
