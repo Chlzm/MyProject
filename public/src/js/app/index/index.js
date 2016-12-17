@@ -34,7 +34,7 @@
                 }).success(result=>{
                     setTimeout(()=>{
                         $scope.$apply(()=>{
-                            $scope.dataList = result.result;
+                            $scope.dataList = result.data;
                         });
                     }, 0); 
                 })

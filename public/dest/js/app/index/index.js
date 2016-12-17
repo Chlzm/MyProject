@@ -23,7 +23,7 @@ define([], function () {
                     }).success(function (result) {
                         setTimeout(function () {
                             $scope.$apply(function () {
-                                $scope.dataList = result.result;
+                                $scope.dataList = result.data;
                             });
                         }, 0);
                     });

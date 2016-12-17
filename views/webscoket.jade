@@ -8,11 +8,13 @@ block content
 				console.log('Connection to server opened');
 			}
 			function sendMessage() {
-				ws.send(document.getElementById("message").value);
+				ws.send(JSON.stringify({
+					data: document.getElementById("message").value
+				}));
 			}
 			ws.onmessage=function(e){
 				var stocksData = JSON.parse(e.data);
-				console.log(stocksData);
+				console.log(stocksData.data);
 			}
 		div.classname#id(attr="")
 			h1(style="text-align:center;") Welcome To WebSocket
