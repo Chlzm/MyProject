@@ -28,6 +28,10 @@ if(app.get('env') === 'development'){
         });
     });
 }
+var websoket = require('./module/websoket');
+websoket({
+    app:app
+});
 var routes = require('./routes')({
 	app:app,
 	db : db

@@ -9,6 +9,9 @@ module.exports = function(o){
     o.app.get('/lisheng',function(req,res){
         res.render('thankyou',{title : '<p>ddd</p>'})
     });
+    o.app.get('/websocket',function(req,res){
+        res.render('webscoket',{title : 'WebSocket'})
+    });
     // 热门知识接口
     o.app.post('/getHotKnowledge',function(req,res){
         var query = o.db.knowledge.find({}).limit(4);

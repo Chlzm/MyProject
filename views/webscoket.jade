@@ -1,0 +1,20 @@
+extend layout
+block content
+	body
+		script(type="text/javascript" src="global/socket.io.js")
+		script(type="text/javascript").
+			var ws = new WebSocket("ws://localhost:8081");
+			ws.onopen = function (e) {
+				console.log('Connection to server opened');
+			}
+			function sendMessage() {
+				ws.send(document.getElementById("message").value);
+			}
+			ws.onmessage=function(e){
+				var stocksData = JSON.parse(e.data);
+				console.log(stocksData);
+			}
+		div.classname#id(attr="")
+			h1(style="text-align:center;") Welcome To WebSocket
+			input(type="text" id="message")
+			input(type="button" value="提交" onclick="sendMessage()")
