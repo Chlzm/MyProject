@@ -3,18 +3,15 @@ block content
 	body
 		script(type="text/javascript" src="global/socket.io.js")
 		script(type="text/javascript").
-			var ws = new WebSocket("ws://192.168.11.102:8081");
-			ws.onopen = function (e) {
-				console.log('Connection to server opened');
+			var socket = io();
+			function sendMessage(){
+				socket.emit('chat message', document.getElementById('message').value);
 			}
-			function sendMessage() {
-				ws.send(document.getElementById("message").value);
-			}
-			ws.onmessage=function(e){
-				//console.log(e.data);
-				//document.write(e.data);
-				document.getElementById('content').innerHTML = e.data;
-			}
+			socket.on('chat message', function (msg) {
+				var ele = document.createElement('p');
+				ele.innerHTML = msg;
+				document.getElementById('content').appendChild(ele);
+			});
 		div.classname#id(attr="")
 			h1(style="text-align:center;") Welcome To WebSocket
 			input(type="text" id="message")

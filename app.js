@@ -36,8 +36,19 @@ var routes = require('./routes')({
 	app:app,
 	db : db
 });
-if(!module.parent){ 
-    app.listen(3000);
-    console.log('ok')
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+io.on('connection', function(socket){
+    console.log('a user connected');
+
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+
+        io.emit('chat message', msg);
+    });
+});
+if(!module.parent){
+    http.listen(3000);
+    //console.log('ok')
 }
 module.exports = app;
