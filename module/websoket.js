@@ -4,9 +4,7 @@ module.exports = function(o){
     wss.on('connection', function (ws) {
         console.log('client connected');
         ws.on('message', function (message) {
-            ws.send({
-                data:JSON.parse(message).data
-            },{mask:true});
+            ws.send(message);
         });
     });
 }

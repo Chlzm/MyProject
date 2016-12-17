@@ -3,20 +3,20 @@ block content
 	body
 		script(type="text/javascript" src="global/socket.io.js")
 		script(type="text/javascript").
-			var ws = new WebSocket("ws://localhost:8081");
+			var ws = new WebSocket("ws://192.168.11.102:8081");
 			ws.onopen = function (e) {
 				console.log('Connection to server opened');
 			}
 			function sendMessage() {
-				ws.send(JSON.stringify({
-					data: document.getElementById("message").value
-				}));
+				ws.send(document.getElementById("message").value);
 			}
 			ws.onmessage=function(e){
-				var stocksData = JSON.parse(e.data);
-				console.log(stocksData.data);
+				//console.log(e.data);
+				//document.write(e.data);
+				document.getElementById('content').innerHTML = e.data;
 			}
 		div.classname#id(attr="")
 			h1(style="text-align:center;") Welcome To WebSocket
 			input(type="text" id="message")
 			input(type="button" value="提交" onclick="sendMessage()")
+		div#content
