@@ -28,16 +28,19 @@ if(app.get('env') === 'development'){
         });
     });
 }
+/*
 var websoket = require('./module/websoket');
 websoket({
     app:app
 });
+*/
 var routes = require('./routes')({
 	app:app,
 	db : db
 });
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+console.log(io)
 io.on('connection', function(socket){
     console.log('a user connected');
 
@@ -47,8 +50,5 @@ io.on('connection', function(socket){
         io.emit('chat message', msg);
     });
 });
-if(!module.parent){
-    http.listen(3000);
-    //console.log('ok')
-}
+http.listen(3000);
 module.exports = app;

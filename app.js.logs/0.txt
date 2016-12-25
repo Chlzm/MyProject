@@ -1,0 +1,103 @@
+Sun, 25 Dec 2016 06:46:55 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at app.js:21:9
+Sun, 25 Dec 2016 06:46:55 GMT body-parser deprecated undefined extended: provide extended option at node_modules\body-parser\index.js:105:29
+Server {
+  nsps: 
+   { '/': 
+      Namespace {
+        name: '/',
+        server: [Circular],
+        sockets: {},
+        connected: {},
+        fns: [],
+        ids: 0,
+        adapter: [Object] } },
+  _path: '/socket.io',
+  _serveClient: true,
+  _adapter: [Function: Adapter],
+  _origins: '*:*',
+  sockets: 
+   Namespace {
+     name: '/',
+     server: [Circular],
+     sockets: {},
+     connected: {},
+     fns: [],
+     ids: 0,
+     adapter: Adapter { nsp: [Circular], rooms: {}, sids: {}, encoder: Encoder {} } },
+  eio: 
+   Server {
+     clients: {},
+     clientsCount: 0,
+     wsEngine: undefined,
+     pingTimeout: 60000,
+     pingInterval: 25000,
+     upgradeTimeout: 10000,
+     maxHttpBufferSize: 100000000,
+     transports: [ 'polling', 'websocket' ],
+     allowUpgrades: true,
+     allowRequest: [Function: bound ],
+     cookie: 'io',
+     cookiePath: '/',
+     cookieHttpOnly: true,
+     perMessageDeflate: { threshold: 1024 },
+     httpCompression: { threshold: 1024 },
+     ws: 
+      WebSocketServer {
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        options: [Object],
+        path: null,
+        clients: [] },
+     _events: { connection: [Function: bound ] },
+     _eventsCount: 1 },
+  httpServer: 
+   Server {
+     domain: null,
+     _events: 
+      { connection: [Function: connectionListener],
+        close: [Function: bound ],
+        upgrade: [Function],
+        request: [Function] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     _connections: 0,
+     _handle: null,
+     _usingSlaves: false,
+     _slaves: [],
+     _unref: false,
+     allowHalfOpen: true,
+     pauseOnConnect: false,
+     httpAllowHalfOpen: false,
+     timeout: 120000,
+     _pendingResponseData: 0 },
+  engine: 
+   Server {
+     clients: {},
+     clientsCount: 0,
+     wsEngine: undefined,
+     pingTimeout: 60000,
+     pingInterval: 25000,
+     upgradeTimeout: 10000,
+     maxHttpBufferSize: 100000000,
+     transports: [ 'polling', 'websocket' ],
+     allowUpgrades: true,
+     allowRequest: [Function: bound ],
+     cookie: 'io',
+     cookiePath: '/',
+     cookieHttpOnly: true,
+     perMessageDeflate: { threshold: 1024 },
+     httpCompression: { threshold: 1024 },
+     ws: 
+      WebSocketServer {
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        options: [Object],
+        path: null,
+        clients: [] },
+     _events: { connection: [Function: bound ] },
+     _eventsCount: 1 } }
+a user connected

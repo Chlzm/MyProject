@@ -1,0 +1,20 @@
+Fri, 23 Dec 2016 15:38:48 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at app.js:21:9
+Fri, 23 Dec 2016 15:38:48 GMT body-parser deprecated undefined extended: provide extended option at node_modules\body-parser\index.js:105:29
+Application has thrown an uncaught exception and is terminated:
+Error: listen EACCES 0.0.0.0:80
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at Server._listen2 (net.js:1249:19)
+    at listen (net.js:1298:10)
+    at Server.listen (net.js:1376:9)
+    at Object.<anonymous> (E:\node\iis\www\MyProject\app.js:52:6)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:488:32)
+    at tryModuleLoad (module.js:447:12)
+    at Function.Module._load (module.js:439:3)
+    at Module.require (module.js:498:17)
+    at require (internal/module.js:20:19)
+    at Object.<anonymous> (C:\Program Files\iisnode\interceptor.js:210:1)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
